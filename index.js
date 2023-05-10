@@ -23,7 +23,7 @@ let width = 20
 let height = 10
 let area = width * height
 document.write('Area = ' + area)
-*/
+
 
 // Thực hành bài 3 "dùng hàm prompt"
 
@@ -31,3 +31,6 @@ var a=prompt("nhập vào giá trị a:");
 var b=prompt("Nhập vào giá trị b:");
 if(a%b==0) { alert('a là bội của b, a/b='+ (a/b))}
 else{ alert('a không phải là bội của b')}
+*/
+
+console.log(1+2+"5");
