@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Changing</title>
+    <script src="index.js"></script> 
+</head>
+<body>
+
+<table>
+    <th>amount</th>
+    <th>Switch from</th>
+    <th>to</th>
+    <th></th>
+    <tr>
+        <td>
+            <input type="number" id="money">
+        </td>
+        <td>
+            <select name="from" id="from">
+                <option value="vn">Việt Nam</option>
+                <option value="my">Mỹ</option>
+            </select>
+        </td>
+        <td>
+            <select name="toi" id="toi">
+                <option value="vn2">Việt Nam</option>
+                <option value="my2">Mỹ</option>
+            </select>
+        </td>
+        <td>
+            <button onclick="onClick()">Click here</button>
+        </td>
+    </tr>
+    <tr>
+        <td><input type="number" id="result"></td>
+        <td><h2 id="gt">Giá trị tiền tệ</h2></td>
+    </tr>
+</table>
+
+
+
+    <!-- 
+    <table>
+        <th>amount</th>
+        <th>Switch from</th>
+        <th>to from</th>
+        <th></th>
+        <tr>
+            <td>
+                <input type="number" id="money">
+            </td>
+            <td>
+                <select name="from" id="from">
+                    <option value="vn">Việt Nam</option>
+                    <option value="my">Mỹ</option>
+                </select>
+            </td>
+            <td>
+                <select name="to" id="to">
+                    <option value="vn">Việt Nam</option>
+                    <option value="my">Mỹ</option>
+                </select>
+            </td>
+            <td>
+                <button onclick="onClick()">Click here</button>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="number" id="result"></td>
+            <td><h2 id="gt">Giá trị tiền tệ</h2></td>
+        </tr>
+    </table>
+    
+     -->
+</body>
+</html>
