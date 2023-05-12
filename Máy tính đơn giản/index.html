@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy tính đơn giản</title>
+</head>
+
+<body>
+    <h1> Thực hành tạo 1 máy tính đơn giản</h1>
+    <br><br>
+    <h2 id="oNhap" style="border: 1px;"></h2>
+    <br>
+    <table>
+
+        <tr>
+            <td><button onclick="add1()" id="so1">1</button></td>
+            <td><button onclick="add2()" id="so2">2</button></td>
+            <td><button onclick="add3()" id="so3">3</button></td>
+            <td><button onclick="addAdd()" id="add">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="add4()" id="so3">4</button></td>
+            <td><button onclick="add5()" id="so4">5</button></td>
+            <td><button onclick="add6()" id="so5">6</button></td>
+            <td><button onclick="addSubtract()" id="subtract">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="add7()" id="so7">7</button></td>
+            <td><button onclick="add8()" id="so8">8</button></td>
+            <td><button onclick="add9()" id="so9">9</button></td>
+            <td><button onclick="addMulti()" id="multi">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="addAC()" id="ac">AC</button></td>
+            <td><button onclick="addKhong()" id="khong">0</button></td>
+            <td><button onclick="addBang()" id="bang">=</button></td>
+            <td><button onclick="addDivice()" id="divice">/</button></td>
+        </tr>
+    </table>
+    <script>
+        console.log("in ra")
+        let oNhap = document.getElementById('oNhap');
+        function add1() {
+            document.getElementById('oNhap').innerText += 1;
+        }
+        function add2() {
+            document.getElementById('oNhap').innerText += 2;
+        }
+        function add3() {
+            document.getElementById('oNhap').innerText += 3;
+        }
+        function add4() {
+            document.getElementById('oNhap').innerText += 4;
+        }
+        function add5() {
+            document.getElementById('oNhap').innerText += 5;
+        }
+        function add6() {
+            document.getElementById('oNhap').innerText += 6;
+        }
+        function add7() {
+            document.getElementById('oNhap').innerText += 7;
+        }
+        function add8() {
+            document.getElementById('oNhap').innerText += 9;
+        }
+        function add9() {
+            document.getElementById('oNhap').innerText += 9;
+        }
+        function addKhong() {
+            document.getElementById('oNhap').innerText += 0;
+        }
+        function addAdd() {
+            document.getElementById('oNhap').innerText += '+';
+        }
+        function addSubtract() {
+            document.getElementById('oNhap').innerText += '-';
+        }
+        function addMulti() {
+            document.getElementById('oNhap').innerText += '*';
+        }
+        function addDivice() {
+            document.getElementById('oNhap').innerText += '/';
+        }
+        function addAC() {
+            document.getElementById('oNhap').innerText= null;
+        }
+        function addBang(){
+        
+           let a=eval(oNhap.innerText);
+           document.getElementById('oNhap').innerText=parseInt(a);
+        }
+    </script>
+</body>
+
+</html>
