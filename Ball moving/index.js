@@ -9,4 +9,8 @@ function khaiBaoViTri() {
 function ballMoving() {
     ball.style.left = parseInt(ball.style.left) + 10 + 'px'; //nếu click vào nút button thì ball di chuyển 10px 1 lần
 }
+function moveLeft() {
+    ball.style.left=parseInt(ball.style.left)-10+"px";//nếu click vào nút button thì ball di chuyển 10px 1 lần
+}
+
 window.onload = khaiBaoViTri;// onload sử dụng khi 1 chương trình nhẽ ra phải chạy tuần tự từng bước, nhưng onload cho phép đảo vị trí các bước để chạy chương trình.
