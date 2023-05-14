@@ -7,24 +7,16 @@
     <title>Thẻ HR</title>
 </head>
 <body>
-    <hr style="width: 200px;" id="hr">
 <script>
-    let hr=document.getElementById('hr');
-    console.log(hr.style.width);
- 
-
-
-    function chay() {
-       console.log("đã chạy function")
-        let i;
-        for (i=1;i<200;i++){
-            hr=i;
-            console.log(hr);
-            document.getElementById('hr').style.width=hr+"px";
+    let a= "";
+    do {
+         a =prompt("nhập vào số a trong phạm vi từ 1 đến 10 :"); 
+         console.log(a);
         }
-        
-    }
-    window.onload=chay;
+    while (a>0&&a<10);
+    
+        alert("Nhập ngoài phạm vi");
+    
 
 </script>
 </body>
