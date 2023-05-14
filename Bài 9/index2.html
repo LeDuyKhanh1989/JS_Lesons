@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sửu dụng vong lặp while</title>
+
+</head>
+<body>
+    <input type="number" id="addNumber">
+    <button onclick="runWhile()">Nhập</button>
+    <H2 id="h2">SỐ VỪA NHẬP LÀ:</H2>
+    
+    <Script>
+        let num = prompt("Enter a number: ");
+        let total = 0;
+        while( num !=1 ) {
+          num = prompt("Enter a number: ");
+          console.log(num);
+        }
+/*      
+        let sum=0;
+        
+        let h2=document.getElementById('h2').value;
+
+        function runWhile(){
+            let addNumber=document.getElementById('addNumber').value;
+            console.log("đã chạy function!")
+            document.getElementById('h2').innerText=addNumber;
+            console.log('Số vừa nhập là: '+addNumber);
+            sum=eval(sum)+eval(addNumber);
+            console.log(sum);
+            if (addNumber==1){
+                alert("bàn vừa nhập vào số 1")
+            }
+            
+        }
+*/
+
+    </Script>
+</body>
+</html>
