@@ -9,6 +9,7 @@ function click1(){
     }
     console.log("link 1 đã chạy")
     console.log(document.getElementById('anh1').src)
+    window.onclick=chay;
     }
 
 function click2(){
@@ -19,6 +20,7 @@ function click2(){
         index=0;
     }
     console.log("Link 2 đã chạy")
+    window.onclick=chay;
 }
 
 function click3(){
@@ -29,6 +31,7 @@ function click3(){
         index=0;
     }
     console.log("Link 3 đã chạy")
+    window.onclick=chay;
 
 }
 
@@ -40,6 +43,7 @@ function click4(){
         index=0;
     }
     console.log("Link 4 đã chạy")
+    window.onclick=chay;
 }
 
 function click5(){
@@ -50,39 +54,35 @@ function click5(){
         index=0;
     }
     console.log("Link 5 đã chạy")
+    window.onclick=chay;
 }
 function chay() {
-    alert("I can not find out the way to complete the part2. :'(")
-    /*
-    chuoi=document.getElementById('anh1').src+document.getElementById('anh2').src+document.getElementById('anh3').src+document.getElementById('anh4').src+document.getElementById('anh5').src;
-    console.log(chuoi);
-    let mangA=["../mk1.jpg","../mk2.jpg","../mk3.jpg","../mk4.jpg","../mk5.jpg"]
-    let a1= document.getElementById('anh1');
-    let b1=document.getElementById('anh2');
-    let c1=document.getElementById('anh3');
-    let d1=document.getElementById('anh4');
-    let e1=document.getElementById('anh5');
-    a1.style.src=mangA[0];
-    b1.style.src=mangA[1];
-    c1.style.src=mangA[2];
-    d1.style.src=mangA[3];
-    e1.style.src=mangA[4];
-    if(chuoi==a1+b1+c1+d1+e1) {
-        alert("Bạn đã tìm ra con khỉ")
+    let mangA=["http://127.0.0.1:5500/mk1.jpg","http://127.0.0.1:5500/mk2.jpg","http://127.0.0.1:5500/mk3.jpg","http://127.0.0.1:5500/mk4.jpg","http://127.0.0.1:5500/mk5.jpg"];
+    let mangB=["http://127.0.0.1:5500/cat1.jpg","http://127.0.0.1:5500/cat2.jpg","http://127.0.0.1:5500/cat3.jpg","http://127.0.0.1:5500/cat4.jpg","http://127.0.0.1:5500/cat5.jpg"];
+    let mangC=["http://127.0.0.1:5500/panda1.jpg","http://127.0.0.1:5500/panda2.jpg","http://127.0.0.1:5500/panda3.jpg","http://127.0.0.1:5500/panda4.jpg","http://127.0.0.1:5500/panda5.jpg"];
+    let anh1= document.getElementById('anh1').src;
+    console.log(anh1);
+
+    let anh2=document.getElementById('anh2').src;
+    console.log(anh2);
+    let anh3=document.getElementById('anh3').src;
+    console.log(anh3);
+    let anh4=document.getElementById('anh4').src;
+    console.log(anh4);
+    let anh5=document.getElementById('anh5').src;
+    console.log(anh5);
+    if(anh1==mangA[0]&&anh2==mangA[1]&&anh3==mangA[2]&&anh4==mangA[3]&&anh5==mangA[4]){
+        alert("Bạn đã tìm ra con Khỉ")
+    } else 
+    if(anh1==mangB[0]&&anh2==mangB[1]&&anh3==mangB[2]&&anh4==mangB[3]&&anh5==mangB[4]){
+        alert("Bạn đã tìm ra con Mèo")
+    }else 
+    if (anh1==mangC[0]&&anh2==mangC[1]&&anh3==mangC[2]&&anh4==mangC[3]&&anh5==mangC[4]){
+        alert("Bạn đã tìm ra con Gấu Trúc")
     }
-    let a1=["../mk1.jpg","../mk2.jpg","../mk3.jpg","../mk4.jpg","../mk5.jpg"];
-    let b1=["../panda1.jpg","../panda2.jpg","../panda3.jpg","../panda4.jpg","../panda5.jpg"];
-    let c1=["../cat1.jpg","../cat2.jpg","../cat3.jpg","../cat4.jpg","../cat5.jpg"];
-    let a=document.getElementById('anh1');
-    let b=document.getElementById('anh2');
-    let c=document.getElementById('anh3');
-    let d=document.getElementById('anh4');
-    let e=document.getElementById('anh5');
-    if(a.src==a[0]&&b.src==a[1]&&c.src==a[2]&&d.src==a[3]&&e.src==a[4]){
-        alert("Bạn đã  chọn được the Monkey")
-    } else {
-        alert("Sai rồi, Hãy chọn đúng");
-    }  
-    */
+    esle 
+    {
+        console.log("Ghép ảnh chưa đúng")
+    }
+    
 }
-window.onload= chay;
