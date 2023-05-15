@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 8</title>
+</head>
+
+<body>
+    <button onclick="choi()">Chơi</button>
+    <script>
+    function choi(){
+            let n=prompt("nhap vào mảng từ 0 tới số bạn muốn:")
+            console.log(n);
+            let a=[""];
+            for (let i=1;i<=n;i++){
+                a.push(i);
+                console.log(a[i]);
+
+            }
+            const luckyNumber=  a[Math.floor(Math.random() * a.length)];
+                console.log(luckyNumber);
+            for(let j=1;j<=4;j++) {
+                let k=prompt("nhập vào số bạn muốn đoán:");
+                if(k==luckyNumber) {
+                    alert("Chúc mừng bạn đã chiến thắng trò chơi với số dự đoán đúng là:"+luckyNumber);
+                    break;
+                } else if(k>luckyNumber){
+                    alert("Số bạn chọn đang lớn hơn số cần tìm!");
+                } else{
+                    alert("Số bạn chọn đang nhỏ hơn số cần tìm!");
+                    
+                } 
+            } alert("bạn đã hết lượt chơi!!! Gave over!!!");
+        }
+        
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        var i;
+        var fib = [0, 1]; // Initialize array!
+
+        for (i = 2; i <= 60; i++) {
+            // Next fibonacci number = previous + one before previous
+            // Translated to JavaScript:
+            let tong = 0;
+            fib[i] = fib[i - 2] + fib[i - 1];
+            if (fib[i] % 7 == 0) {
+                
+                console.log(fib[i]);
+                tong = tong + fib[i];
+              
+            }  console.log(tong);
+
+        }
+    </script>
+</body>
+
+</html>
