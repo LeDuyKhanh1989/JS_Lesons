@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Good - Fast - Cheap</title>
+</head>
+
+<body>
+    <Div align="center">
+        <H1>Good - Fast - Cheap</H1>
+        <input onchange="chay()" type="range" min="0" max="1" id="a" value="0"><br>
+        <input onchange="chay()" type="range" min="0" max="1" id="b" value="0"><br>
+        <input onchange="chay()" type="range" min="0" max="1" id="c" value="0"><br>
+    </Div>
+    <script>
+        function chay() {
+            let a = document.getElementById('a');
+            let b = document.getElementById('b');
+            let c = document.getElementById('c');
+            count1=1;
+            if(a.value==1&&b.value==1&&c.value==1){
+                b.value=0;
+                c+=c;
+            } else if(b.value==1&&a.value==1){
+                c.value=0;
+                c+=c;
+            }else if( b.value=1&&c.value==1){
+                a.value=0;
+                c=1;
+            } else{
+                alert("Trường hợp này chưa được xét")
+            }
+        }
+    
+
+    </script>
+
+</body>
+
+</html>
