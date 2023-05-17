@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm giá trị lớn nhất trong bảng</title>
+</head>
+<body>
+    <div align="center">
+        <h1> Nhập vào giá trị của mảng để xem kết quả</h1>
+        <input style="font-size: 20px;" type="text" name="" id="nhap" width="500" height="800"><br>
+        <button onclick="nhapMang()">Nhập</button>
+        <button onclick="xemMang()">Xem mảng</button>
+        <button onclick="XemGTLN()">Xem giá trị lớn nhất</button>
+        <H2 id='show'>Xem các phần tử mảng</H2>
+
+    </div>
+    <script>
+        let mangA = [];
+        function nhapMang() {
+            let nhap=document.getElementById("nhap");
+            mangA.push(nhap.value);
+            nhap.value="";
+        }
+
+        
+
+        function xemMang() {
+            console.log(mangA)
+            let show = document.getElementById('show');
+            show.value = mangA;
+            show.innerText = `Mảng A có các phần tử là [${mangA}] `;
+            let d=prompt("nhập vào số bất kỳ để kiểm tra")
+            for (let e=0;e<mangA.length;e++){
+                if(d==mangA[e]){
+                    alert(`Mảng A đã có giá trị ${d} tại vị trí ${e}`)
+                    break;
+                } 
+                
+            }
+        }
+        function XemGTLN(){
+            let max=mangA[0];
+            for (let i=0;i<mangA.length;i++){
+                if(max<mangA[i]){
+                   max=mangA[i];
+                }
+            }alert(`Giá trị lớn nhất trong mảng A là: ${max}`)
+        }
+/*
+        function checkMang(){
+            let a= prompt("nhập vào giá trị muốn kiểm tra");\
+            console.log(a);
+            for (let i=0;i<mangA.length;i++){
+                if(eval(a)==mangA[i]){
+
+                    alert(`Mảng A đã có giá trị ${a} tại vị trí ${i}`)
+                }
+            }
+        }
+*/     
+    </script>
+
+
+    
+</body>
+</html>

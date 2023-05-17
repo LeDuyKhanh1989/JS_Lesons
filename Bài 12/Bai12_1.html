@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhập mảng</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1> Nhập vào giá trị của mảng để xem kết quả</h1>
+        <input style="font-size: 20px;" type="text" name="" id="nhap" width="500" height="800"><br>
+        <button onclick="nhapMang()">Nhập</button>
+        <button onclick="xemMang()">Xem mảng</button>
+        <button onclick="daoNguoc()"> Đảo ngược các phần tử mảng</button>
+        <H2 id='show'>Xem các phần tử mảng</H2>
+
+    </div>
+    <script>
+        let mangA = [];
+        function nhapMang() {
+            mangA.push(nhap.value);
+            nhap.value="";
+            checkPhanTuMang();
+        }
+
+        
+
+        function xemMang() {
+            console.log(mangA)
+            let show = document.getElementById('show');
+            show.value = mangA;
+            show.innerText = `Mảng A có các phần tử là [${mangA}] `;
+        }
+
+        function daoNguoc() {
+            console.log(`hàm đảo ngược ${mangA}`)
+            let first = 0;
+            let last = mangA.length - 1;
+            while (first < last) {
+                console.log(`đây là vùng lặp while ${mangA}`)
+                let a = mangA[first];
+                mangA[first] = mangA[last];
+                mangA[last] = a;
+                first++;
+                last--;
+
+            }
+            console.log(mangA)
+            let show = document.getElementById('show');
+            show.value = mangA;
+            show.innerText = `Mảng A có các phần tử là [${mangA}] `;
+
+        }
+        function checkPhanTuMang()
+        {   let nhap = document.getElementById("nhap");
+            for (let i=0; i<mangA.length;i++){
+                if (nhap.value==mangA[i]){
+                    alert(`value ${mangA[i]} fount at ${i}`)
+                }
+            }
+        }
+        
+    </script>
+</body>
+
+</html>
