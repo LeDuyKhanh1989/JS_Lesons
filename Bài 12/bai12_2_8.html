@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9 bài tập của bài 12 - Luyện tập mảng</title>
+</head>
+
+<body>
+    <button onclick="NoiMang()">Nối mảng</button>
+    <Script>
+        let mangN = [];
+        for (i = 0; i < 5; i++) {
+
+            let n = +prompt('nhập vào số n:');
+            mangN.push(n);
+        } console.log(mangN);
+        // tạo funtion check các phần tử lớn hơn 10 trong mảng
+        function checkLonHon10() {
+            let mangCheck = [];
+            let count = 1
+            for (let i = 0; i < mangN.length; i++) {
+                if (mangN[i] >= 10) {
+                    count += 1;
+                    console.log("count nằm ở vị trí" + i + "trong mảng" + mangN[i]);
+                    mangCheck.push(mangN[i]);
+                }
+            } console.log(mangCheck);
+        }
+
+        // Tạo funtion tìm vị trí và số lớn nhất trong mảng
+        function timSoLN() {
+            let max = mangN[0];
+            for (i = 0; i < mangN.length; i++) {
+                if (mangN[i] > max) {
+                    max = mangN[i];
+                }
+            } console.log(`giá trị lớn nhất là ${max} tại vị trí ${mangN.indexOf(max)} của mảng`);
+        }
+
+        //Tìm giá trị trung bình của các phần tử trong mảng
+        function giaTriTB() {
+            let sum = 0;
+            for (let i = 0; i < mangN.length; i++) {
+                sum += parseInt(mangN[i]);
+            }
+            console.log(mangN.length);
+            let gtbt = sum / (mangN.length);
+
+            console.log(`Giá trị trung bình của các phần tử trong mảng N là ${gtbt}`);
+        }
+
+        //Kiểm tra số V nhập vào có nằm trong mảng hay không, Xét V có thuộc số nguyên hay không
+        function checkV_InMang() {
+            let v = parseFloat(prompt("nhập vào số V bất kỳ để kiểm tra"));
+            console.log(v);
+            let count = 0;
+            if (mangN.indexOf(v) == -1) {
+                console.log(`Số ${v} không thuộc mảng N`);
+            } else {
+                count += 1;
+                console.log(`Số ${v} có trong mảng và là phần tử thứ ${mangN.indexOf(v)}`);
+            }
+            if (parseFloat(v) % 1 == 0 && v > 0) {
+                console.log(`${v} Là số nguyên dương`);
+            } else {
+                console.log(`${v} Không phải là số nguyên dương`);
+            }
+        }
+
+        //Kiểm tra và xóa số V trong mảng
+        function Check_removeV() {
+            let v = parseFloat(prompt("nhập vào số V bất kỳ để kiểm tra"));
+            let mangKhongChuaV = [];
+
+            for (let i = 0; i < mangN.length; i++) {
+                if (mangN[i] !== mangN[mangN.indexOf(v)]) {
+                    mangKhongChuaV.push(mangN[i]);
+                }
+            }
+            console.log(mangKhongChuaV);
+        }
+
+        //Sắp xếp mảng theo thứ tự giảm dần
+        function SapXepGiamDan() {
+            for (let i = 0; i < mangN.length - 1; i++) {
+                for (let j = mangN.length - 1; j > i; j--) {
+                    if (mangN[j] < mangN[j - 1]) {
+                        let t = mangN[j];
+                        mangN[j] = mangN[j - 1];
+                        mangN[j - 1] = t;
+                    }
+                    console.log("vòng lặp trong" + mangN);
+                }
+                console.log("vòng lặp ngoài" + mangN);
+            }
+            console.log("Kết quả" + mangN);
+        }
+
+        // Nối mảng a,b vào mảng C
+        function NoiMang(){
+            let mangB=[2,4,76,8,4,2,6,7,9,4,4,10];
+            console.log(mangB)
+            let mangC=[1,8,0,5,"trt","sfv",2,"sd"];
+            console.log(mangC)
+            let mangD=mangB.concat(mangC);
+            console.log(mangD)
+            
+        }
+
+    </Script>
+
+</body>
+
+</html>

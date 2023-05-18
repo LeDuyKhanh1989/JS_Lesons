@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let a="The Quick Brown Fox";
+        console.log("chuỗi 1:"+a);
+        let b=a.toUpperCase();
+        console.log("Chuỗi 2:"+b);
+        let chuoiLuu="";
+        for (let i=0; i<=a.length-1;i++){
+            if(a[i]==b[i]){
+                chuoiLuu+=a[i].toLowerCase();
+            } else {
+                chuoiLuu+=b[i];
+            }
+        }
+    console.log("Chuỗi 3:"+chuoiLuu);
+    </script>
+</body>
+</html>

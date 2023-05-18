@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm so khong co trong mangA nhưng có trong mangB</title>
+</head>
+<body>
+<script>
+    /*
+    let mangA=[0,1,2,3,4];
+    let mangB=[3,4,5,6,0,7,3];
+    let flag=0;
+    let mangC=[];
+    for(let i=0;i<mangB.length;i++){
+            flag=mangB[i];
+            for (let j=0;j<mangA.length;j++){
+                if(flag!==mangA[j]){
+                    console.log(flag+"Không có trong mangA")
+                } else {
+                    console.log("mang")
+                }
+            } mangC.push(flag);
+            
+    }console.log(mangC)
+    */
+    let number1 = [9,2,11,15];
+    let number2 = [11,3,7,9];
+    // in ra các số có trong mảng number1 nhưng k có trong mảng number2
+        for (let i=0;i<number1.length;i++){
+        let b=-1;
+        b=number2.indexOf(number1[i]);//Tìm ra vị trí biến không có trong mảng B của mảng A
+        console.log("Vị trí: "+b);
+        if (b<0){
+            console.log(number1[i]);
+        }}
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chèn dấu trừ vào các phần tử mảng</title>
+</head>
+
+<body>
+    <Script>
+        let mang = [0, 2, 5, 4, 6, 8]; //Khai báo mảng có các phần tử như trên
+        let mangThayThe=[]; // Khai báo 1 mảng rỗng
+        for (let i = 0; i < mang.length; i++) {
+          
+            if(mang[i]%2==0&&mang[i+1]%2==0)//điều kiện 2 số gần nhau là số chẵn
+            {
+                mangThayThe.push(mang[i],"-");//nếu điều kiện đúng thì thêm phần tử từ mảng mang tới mảng mangThayThe
+            } else {
+                mangThayThe.push(mang[i]);//Nếu sai thì chèn phần tử mang mang tới mảng mangThayThe như bt
+            }
+        } console.log(mangThayThe);
+    </Script>
+</body>
+
+</html>
