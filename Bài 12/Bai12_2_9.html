@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 12_2_9 thực hành mảng 2 chiều</title>
+</head>
+
+<body>
+    <script>
+        /* Tic tắc toe
+        let mangN = [
+            [2,4,6,8,0],
+            [1,3,5,7,9],
+            [8,5,7,9,4,3],
+            [6,4,6,8,5],
+            [1,2,3,4,5]
+        ];
+        console.log(mangN.length);
+        
+        document.write(mangN+"<br>");
+        let count = 1;
+        for (count = 1; count <= 5; count++) {
+            if (count % 2 == 0) {
+                let i = prompt("nhập vào tọa độ x:");
+                let j = prompt("nhập vào tọa độ y:");
+
+            
+            for (let i in mangN) {
+                console.log("row " + i);
+                for (let j in mangN[i]) {
+                    console.log(" " + mangN[i][j]);
+                }
+            }
+        } 
+        document.write[mangN];
+        }
+        */
+
+
+        /* Nhập vào mảng 2 chiều, in ra phần tử đầu tiên các mảng 
+        for (let dong in mangN){
+            console.log(`Đây là dòng nhé: ${mangN[dong]}`);
+            for (let cot in mangN){
+                console.log(`Đây là giá trị thứ 4 của cột trong dòng nhé ${mangN[dong][cot]}`)
+            }
+        }
+        */
+        // for (let i in mangN){
+        // for (let j in mangN){
+        // i= prompt("nhập vào giá trị lớn hơn 0 và nhỏ hơn 6 cho X")
+        // i= prompt("nhập vào giá trị lớn hơn 0 và nhỏ hơn 6 cho y")
+        // console.log(mangN[i][j])
+        // }
+        //  }
+
+        //in ra thứ tự đảo ngược của 1 mảng
+
+        /*       let mangN = ['c', 's', 'c', '2', '6', '1']
+               console.log(`trước khi đổi chiều ${mangN}`);
+               for (let i = 0; i < mangN.length - 1; i++) {
+                   for (let j = mangN.length - 1; j > i; j--) {
+                       if (mangN[j] < mangN[j - 1]) {
+                           let t = mangN[j];
+                           mangN[j] = mangN[j - 1];
+                           mangN[j - 1] = t;
+                       }
+                   }
+               }
+               console.log(mangN);
+               let b="";
+               for (let f=0;f<mangN.length;f++){
+                   b+=mangN[f];
+               }
+               console.log(b);
+       */
+
+
+
+
+        //Nhập 1 mảng, đếm số ký tự trong từng phần tử
+
+
+
+        let mangN = [];
+        let n = prompt("nhập vào số phần tử mảng:")
+
+        for (let i = 1; i <= n; i++) {
+            let nhap = prompt("Nhập vào giá trị phần tử mảng:")
+            mangN.push(nhap);
+        }
+        console.log(mangN);
+        // mangN[12-23123-1-312-3, 123-414-6554-65-869-9]
+        for (let a = 0; a < mangN.length; a++) {
+            let mangTam = [];
+            let DauGach="-"
+            for (let b = 0; b < mangN[a].length; ++b) {
+
+                if(mangN[a].charAt(b)==DauGach){
+                    mangTam.push("_");
+                } else{
+                    mangTam.push(mangN[a].charAt(b));
+                }
+                
+            }
+            let c=mangTam.toString();
+            console.log("C là: "+c);
+            mangN[a]=c;
+            
+        }
+        console.log(mangN);
+
+
+        //mangN.splice(1, 3);
+
+
+         // Tạo function chuyển dấu gạch.
+        // let a= "545-4-tth---h55-h-hhg4"
+        /*
+                function chuyendauGach(a) {
+                    let mangTam = [];
+                    for (let j = 0; j < a.length; ++j) {
+                        mangTam.push(a.charAt(j));
+        
+                    }
+                    console.log("mang moi tao" + mangTam);
+        
+                    for (let r = 0; r < mangTam.length; ++r) {
+                        if (mangTam[r] === "-") {
+                            mangTam[r] = "_"
+                        }
+        
+                    }
+                    console.log("thay dau - " + mangTam);
+                    let b = "";
+                    for (let t = 0; t < mangTam.length; ++t) {
+                        b += mangTam[t];
+                    }
+                    console.log("gán chuỗi b " + b);
+                    return b;
+                }
+                // let ac = chuyendauGach(a);
+                // console.log("Đây là AC nhé: "+ac);
+        */
+    </script>
+</body>
+
+</html>
