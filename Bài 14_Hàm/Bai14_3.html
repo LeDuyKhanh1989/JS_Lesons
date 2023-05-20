@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm giá trị nhỏ nhất trong mảng - Dùng Hàm</title>
+</head>
+
+<body>
+    <Script>
+
+
+        let arr2 = [7, 12, 6, 9, 20, 56, 89]
+
+        let arr3 = []
+
+        let arr4 = [0, 0, 0, 0, 0, 0]
+
+        let arr1 = [3, 5, 1, 8, -3, 7, 8]
+
+        function findMin(arr) {
+            let mangMoi = [];
+            for (let a of arr) {
+                mangMoi.push(a);
+            }
+            if (mangMoi.length == 0) {
+                console.log("Đây là mảng rỗng")
+            } else {
+                let min = mangMoi[0];
+                for (let i = 0; i < mangMoi.length; i++) {
+                    if (min > mangMoi[i + 1]) {
+                        min = mangMoi[i + 1];
+                    }
+                }
+                console.log(min);
+                console.log(arr[0]);
+            return min;
+            }
+           
+        }
+
+        findMin(arr4);
+
+    </Script>
+</body>
+
+</html>
