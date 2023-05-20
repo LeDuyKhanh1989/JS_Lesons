@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm sao trong 2 mảng</title>
+</head>
+
+<body>
+    <button onclick="nhapSao(mangA,mangB)">Chạy</button>
+
+</body>
+<script>
+    let mangA = ["Polaris", "Aldebaran", "Deneb", "Vega", "Altair", "Dubhe", "Regulus"];
+    let mangB = ["Ursa Minor", "Tarurus", "Cygnus", "Lyra", "Aquila", "Ursa Major", "Leo"];
+
+    function nhapSao(array1, array2) {
+        let n = prompt("nhập vào tên ngôi sao muốn tìm")
+        let flag=false;
+        for (let e = 0; e < array1.length; e++) {
+            if (n == array1[e]) {
+                console.log(`Tìm thấy ${array1[e]}`);
+                console.log(`Sao ${array1[e]} thuộc chòm sao ${array2[e]}`);
+                break;
+            }
+         }
+    }
+
+
+
+</script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 15.1 - tạo function tìm số nguyên tố</title>
+</head>
+
+<body>
+    <script>
+        let b = prompt("nhập vào số b")
+        function soNT(findSNT) {
+
+            let flag = false;
+
+            if (findSNT == 2) {
+                console.log(`${findSNT} là số nguyên tố chẵn duy nhất`)
+            } else if (findSNT > 2) {
+                for (let i = 2; i < findSNT; i++) {
+                    if (findSNT % i == 0) {
+                        flag = true;
+                    }
+                }
+            } else{
+                flag = true;
+            }
+            if (flag == false) {
+                console.log(`${findSNT} là số nguyên tố`);
+            } else {
+                console.log(`${findSNT} không phải là số nguyên tố`);
+            }
+            flag = false;
+        }
+
+        soNT(b);
+
+    </script>
+
+</body>
+
+</html>

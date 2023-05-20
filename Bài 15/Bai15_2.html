@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 15_2: Chuyển đổi meter to feet</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1> Chuyển đổi metter sang feet và ngược lại</h1>
+        <input type="number" id="meters" placeholder="Nhập vào meters">
+        <button onclick="changeMeter()"> change meter</button>
+        <button onclick="changeFeet()"> change feet</button>
+        <input type="number" id="feet" placeholder="Nhập vào feet">
+    </div>
+<script>
+ 
+   
+    function changeMeter(){
+    let meters= document.getElementById('meters').value;
+    console.log(meters);
+    let b=0.305*meters;
+    console.log(b);
+    
+    document.getElementById('feet').value=b;
+    document.getElementById('feet').innerText=b;
+    }
+
+    function changeFeet(){
+    let feet= document.getElementById('feet').value;
+    console.log(feet);
+    let a=3.279*feet;
+    console.log(a);
+    
+    document.getElementById('meters').value=a;
+    document.getElementById('meters').innerText=a;
+    }
+</script>
+
+
+</body>
+
+</html>

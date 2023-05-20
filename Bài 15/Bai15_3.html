@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập Hàm - Bài 15_3</title>
+</head>
+<body>
+    <button onclick="alertMessage()"> Chạy</button><br>
+
+    <button onclick="tangNLen1()">Nhập vào số N</button>
+    <input type="num" placeholder="Hãy nhập vào số N" id="number">
+
+</body>
+<script>
+    function alertMessage(){
+        alert("hello")
+    }
+    function tangNLen1(numb){
+        let number=document.getElementById('number').value;
+        alert("bạn vừa nhập vào số n là: "+number);
+        number++;
+        alert("Số n vừa nhập đã tăng lên 1 giá trị là: "+number)
+    }
+
+    let a=parseInt(prompt(`Nhập vào số A là: `));
+    let b=parseInt(prompt(`Nhập vào số B là: `));
+
+    function warning(a,b){
+        console.log(a);
+        console.log(b);
+        if(a>b){
+            alert("Số A đang lớn hơn số B")
+        } else{
+            let tong=a+b;
+            alert(`Tổng 2 số A+B là: ${tong}`)
+        }
+    }
+    warning(a,b);
+</script>
+</html>
