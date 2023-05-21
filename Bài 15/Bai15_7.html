@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Diện tích & Chu vi hình tròn</title>
+</head>
+
+<body>
+    <div>
+        <H1>Tính Diện tích & Chu vi hình tròn</H1>
+        <input type="number" name="" id="banKinh" placeholder="Nhập vào bán kính hình tròn">
+        <button onclick="showS()">Xem diện tích</button>
+        <button onclick="showC()">Xem chu vi</button>
+        <h2 id="result">Xem kết quả tại đây:</h2>
+    </div>
+
+    <script>
+
+
+        function showS() {
+            const pi = 3.14;
+            let b=parseInt(document.getElementById('banKinh').value) ;
+            console.log(b);
+            let S=b*b*pi;
+            console.log(S);
+            document.getElementById('result').innerHTML=S;
+        }
+
+        function showC() {
+            const pi = 3.14;
+            let b=parseInt(document.getElementById('banKinh').value) ;
+            console.log(b);
+            let S=b*2*pi;
+            console.log(S);
+            document.getElementById('result').innerHTML=S;
+        }
+    </script>
+
+</body>
+
+</html>
