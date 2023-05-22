@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng quản lý sản phẩm</title>
+    <style>
+        .container {
+            text-align: center;
+            margin: 0 200px;
+        }
+
+        .container-body {
+            background: #f2f2f2;
+            padding: 20px 0;
+        }
+
+        input {
+            width: 500px;
+            padding: 12px 10px;
+            font-size: 16px;
+            outline-color: crimson;
+        }
+
+        button {
+            padding: 14px 10px;
+            font-size: 16px;
+            background: #50af50;
+            border: none;
+            color: white;
+            border-radius: 4px;
+            min-width: 60px;
+            margin-left: 15px;
+        }
+
+        button:hover {
+            opacity: 0.8;
+            cursor: pointer;
+        }
+
+        ul {
+            border: 1px solid red;
+            padding: 0;
+        }
+
+        li,
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            list-style: none;
+            padding: 8px 20px;
+        }
+
+        li:nth-child(even) {
+            background: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Add new product</h2>
+        <div class="container-body">
+            <input type="text" placeholder="New Product">
+            <button class="add">Add</button>
+        </div>
+        <h3>Display All Products</h3>
+        <div class="info">
+            <span>Product Name</span>
+            <span class="quantity">0 product</span>
+        </div>
+        <ul class="list">
+        </ul>
+    </div>
+</body>
+
+</html>
+<script>
+    let listProducts = ['ip','ss'];
+    let ip = document.querySelector('input');
+    let add = document.querySelector('.add');
+    let list = document.querySelector('.list');
+    let quantity = document.querySelector('.quantity');
+    let save;
+
+    function showProduct() {
+        let html = ''
+        for(let i = 0; i < listProducts.length; i++){
+            html += `
+                        <li>
+                        <span>${listProducts[i]}</span>
+                            <div>
+                                <button onclick="editProduct('${listProducts[i]}', ${i})">Edit</button>
+                                <button onclick="deleteProduct(${i})">Delete</button>
+                            </div>
+                        </li>
+                        `
+        }
+            
+            list.innerHTML = html;
+            quantity.innerHTML = listProducts.length > 1 ? `${listProducts.length} products` : `${listProducts.length} product`;
+    }
+    showProduct()
+    function deleteProduct(i){
+        listProducts.splice(i,1);
+        showProduct();
+    }
+    function editProduct(item, i){
+        ip.value = item;
+        add.innerText = 'Sửa';
+        ip.focus();
+        save = i;
+    }
+
+    function addProduct(){
+        if(add.innerText == 'Sửa'){
+            listProducts[save] = ip.value;
+            add.innerText = 'Add';
+        } else {
+            if (ip.value.trim()) listProducts.push(ip.value);
+        }
+        ip.value = '';
+        ip.focus();
+        showProduct();
+    }
+
+    add.onclick = function(){
+        addProduct()
+    }
+
+    </script>
+

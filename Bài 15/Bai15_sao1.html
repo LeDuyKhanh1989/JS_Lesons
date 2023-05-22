@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ứng dụng quản lý sản phẩm</title>
+</head>
+
+<body>
+    <div align="center">
+    <h1>Products list</h1>
+    <input type="text" id="productName" placeholder="typing product's name here">
+    <input type="text" id="fixItem" placeholder="Fixing here">
+    <br>
+    <button onclick="adding()">Adding </button>
+    <button onclick="fixing()">Fixing </button>
+
+    <br>
+    <table id="show">
+        
+    </table>
+</div>
+    <script>
+        let arr = ["SP1", "SP2", "SP3", "SP4", "SP5"];
+        let productName = document.getElementById('productName');
+////
+function createTable(arr){
+        let table = "<table border='1' width='300' cellspacing='0' cellpadding='3'>";
+            table = table + "<tr>";
+                table = table + "<td>stt</td>";
+                table = table + "<td>Sản phẩm</td>";
+                table = table + "<td>Nút bấm</td>";
+            table = table + "</tr>";
+
+            for(let i=0;i<arr.length;i++)
+            {
+                table = table + "<tr>";
+                   let stt=i;
+                    table = table + "<td>" +stt + "</td>";
+                    table = table + "<td>" +arr[i] + "</td>";
+                    table = table + `<td><button onclick='Xoa(${i})'>Xoa</button></td>`;
+                table = table + "</tr>";
+
+            }
+            document.getElementById('show').innerHTML= table;
+        }
+
+        createTable(arr);
+
+////// Adding
+        function adding(array, bien) {
+            if (productName.value == "") {
+                alert("Bạn chưa nhập sản phẩm cần thêm")
+            } else {
+
+                arr.push(productName.value);
+                console.log(arr);
+            }
+            createTable(arr);
+        }
+        adding(arr, productName);
+        
+        function fixing(arr,productName){
+            let newArr=[]
+           
+        }
+/////  Fixing
+
+        function fixing(){
+            console.log(arr);
+            let a = document.getElementById('productName');
+            let b = document.getElementById('fixItem');
+            for (let i=0;i<arr.length;i++){
+                if(a.value==arr[i]){
+                    arr[i]=b.value;
+                }
+            }
+            console.log(arr);
+            createTable(arr);
+        }
+//// Delete
+
+function Xoa(index){
+    arr.splice(index,1)
+    createTable(arr);
+}
+
+    </script>
+</body>
+
+</html>
