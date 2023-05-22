@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập thêm về mảng</title>
+</head>
+
+<body>
+    <script>
+        let myStr = "You guys try to do the exercises because doing more exercises helps us understand the theory and solve problems better";
+        console.log(myStr);
+        console.log(myStr.length);
+        let arr = [];
+        arr = myStr.split(" ");
+        console.log(arr);
+
+        function checkArr(array) {
+            let a = array[0].length;
+            console.log("biến a: " + a);
+            let tuCanTim = "";
+            for (let i = 0; i < array.length; i++)
+                if (a < array[i].length) {
+                    console.log(array[i].length);
+                    a = array[i].length;
+                    tuCanTim = array[i];
+                }
+            console.log(tuCanTim);
+            console.log(`từ ${tuCanTim} có số chữ cái là ${tuCanTim.length}`)
+        }
+
+
+        function timKyTuXuatHienNN(chuoi) {
+        
+            let mang = [];
+            //chuyển chuỗi thành mảng
+            for (let i = 1; i <= chuoi.length; i++) {
+                if(chuoi.charAt(i)!==" "){
+                mang.push(chuoi.charAt(i));}
+            }
+            console.log(mang);
+            let mangCount = [];
+            //Đếm số ký tự giống nhau trong mảng mang
+            for (let i = 0; i < mang.length; i++) {
+                let count = 0;
+                for (let j = 0; j < mang.length; j++) {
+                    if (mang[i] == mang[j]) {
+                        count++;
+                    }
+                }
+            // Tạo mảng mới có cùng số phần tử để lưu biến đếm.
+                mangCount.push(count);
+            } 
+            // Tìm giá trị lớn nhất trong mangCount
+            let max = mangCount[0];
+            for (let i = 0; i < mangCount.length; i++) {
+                if (max < mangCount[i]) {
+                    max = mangCount[i];
+                }
+            }
+            // tìm vị trí max tại mảng count để gán vào mảng
+            for (let i=0; i<mangCount.length;i++){
+                if(max==mangCount[i]){
+                    console.log(`ký tự xuất hiện nhiều nhất trong chuỗi là ${mang[i]} tại vị trí ${i}`)
+                }
+            }
+        }
+        timKyTuXuatHienNN(myStr);
+    </script>
+
+</body>
+
+</html>

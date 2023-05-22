@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài thực hành thêm về mảng Bài 3</title>
+</head>
+
+<body>
+    <input type="text" id="name" placeholder="nhập vào tên người dùng">
+    <button onclick="fixName()">Sửa tên đúng</button>
+    <Script>
+
+
+        function fixName() {
+            let str = "";
+            let name = document.getElementById('name');
+            console.log(name.value);
+            let arr1 = name.value.split(" ");
+            console.log(arr1);
+
+            let name2 = name.value.toUpperCase();
+            console.log(name2);
+            let arr2 = name2.split(" ");
+            console.log(arr2);
+            
+            for (let i = 0; i < arr1.length; i++) {
+                if (arr1[i][0] != arr2[i][0]) {
+                    str+= arr2[i][0];
+                }else{
+                    str+= arr1[i][0];
+                }
+                for (let j = 1; j < arr1[i].length; j++) {
+                    str+= arr1[i][j].toLowerCase();
+                }
+                str+= " ";
+            }
+            console.log("mảng sau khi thay đổi = "+str);
+            
+        }
+
+
+
+    </Script>
+</body>
+
+</html>

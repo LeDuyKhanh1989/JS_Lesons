@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập thêm về mảng</title>
+</head>
+
+<body>
+    <script>
+        let myArr = [1, 2, 2, 7, 8, 8, 8];
+        console.log(myArr);
+        let flag = false;
+        let mangIndex = [];
+        for (let i = 0; i < myArr.length; i++) {
+            let count = 0;
+            for (let j = 0; j < myArr.length; j++) {
+                if (myArr[i] == myArr[j]) {
+                    count++;
+                    flag = true;
+                } else {
+                    flag = false;
+                }
+            }
+            mangIndex.push(count);
+        }
+
+        //Tạo function tìm giá trị lớn nhất
+        function timGTLN(array) {
+            let max = array[0];
+            for (let i = 0; i < array.length; i++) {
+                if (max < array[i]) {
+                    max = array[i];
+                }
+            } console.log("Giá trị lớn nhất trong mảng là: " + max);
+        }
+        function timViTri(array) {
+            let count = 0;
+            let max = array[0];
+            for (let i = 0; i < array.length; i++) {
+                if (max < array[i]) {
+                    max = array[i];
+                }
+            }
+            for (let i = 0; i < array.length; i++) {
+                if (max == array[i]) {
+                    count++;
+                }
+            }
+            console.log("Có " + count + " giá trị lớn nhất");
+        }
+
+        timViTri(myArr);
+        timGTLN(myArr);
+
+        //Loại bỏ các giá trị trùng
+        function removeSameValue(array) {
+            let mangMoi = [];
+            for (let i = 0; i < array.length; i++) {
+                let count = 0;
+                for (j = 0; j < array.length; j++) {
+                    if(array[i]==array[j]){
+                        count++;
+                    }
+                }console.log(count);
+                if(count>1){
+                    array[i]="loai"
+                }
+            }
+            console.log(array);
+            for (i=0;i<array.length;i++){
+                if(array[i]!=="loai"){
+                    mangMoi.push(array[i]);
+                }
+            }
+            console.log(mangMoi);
+        }
+        removeSameValue(myArr);
+    </script>
+
+</body>
+
+</html>
