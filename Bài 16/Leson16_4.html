@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leson 16_4 oop &b Canvas</title>
+</head>
+<body>
+    <canvas style="border: 1px;" style="background-color: beige;" id="myCanvas" width="2000" height="800"> Đây là
+        canvas</canvas>
+
+
+        <script>
+ 
+
+// create a rectangle structure
+function createRectangle(startpointX,startpointY,x,y){
+    let ctx = document.getElementById("myCanvas").getContext("2d");
+    this.x=x;
+    this.y=y;
+   this.startpointX=startpointX;
+    this.startpointX=startpointY;
+    ctx.moveTo(startpointX,startpointY);
+    ctx.lineTo(x+startpointX,startpointY);
+    ctx.lineTo(x+startpointX,y+startpointY);
+    ctx.lineTo(startpointX,y+startpointY);
+    ctx.lineTo(startpointX,startpointY);
+    ctx.stroke()
+
+    ctx.fill();
+    this.s = function(){
+    return (this.x * this.y);
+   }
+   this.c = function (){
+    return (this.x+this.y)*2
+   }
+}
+let rectangle = new createRectangle(200,200,200,100);
+console.log(rectangle.this);
+
+        </script>
+    
+</body>
+</html>

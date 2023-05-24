@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo lớp oop hình tròn</title>
+</head>
+
+<body>
+    <Script>
+        function Circle(radius, color) {
+            this.radius = radius;
+            this.color = color;
+
+            this.dienTich = function () {
+                let s = this.radius * this.radius * 3.14;
+                return s;
+            }
+
+            this.chuVi = function () {
+                let c = 2 * this.radius * 3.14;
+                return c;
+            }
+        }
+
+        let duongTronA = new Circle(5);
+        document.write(duongTronA.radius +"<BR>");
+        
+
+        document.write(duongTronA.dienTich()+"<BR>");
+        document.write(duongTronA.chuVi());
+
+
+    </Script>
+
+</body>
+
+</html>
