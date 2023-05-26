@@ -9,25 +9,29 @@
 <body>
 
     <script>
-        function Temperature(Temperature){
-            this.Temperature=Temperature;
-            this.f=function(){
-                if (Temperature<-273) {
+
+class Temperature {
+    constructor(temperature) {
+        this.temperature = temperature;
+    }
+            
+            temperatureF() {
+                if (this.temperature<-273) {
                     alert("Nhiệt độ không tồn tại")
                 }
-                return Temperature*0.3;
+                return this.temperature*0.3;
             }
-            this.Kenvin= function(){
-                if (Temperature<-273){
+            kenvin(){
+                if (this.temperature<-273){
                     alert("Nhiệt độ không tồn tại")
                 }
-                return Temperature*0.5;
+                return this.temperature*0.5;
             }
         }
 
         let a = new Temperature(25);
-        console.log(Temperature.f);
-        console.log(Temperature.Kenvin)
+        console.log(a.temperatureF());
+        console.log(a.kenvin());
 
     </script>
     
