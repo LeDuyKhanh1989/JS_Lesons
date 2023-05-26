@@ -1,0 +1,240 @@
+class ProductList {
+    constructor(productName, price, color, src) {
+        this.productName = productName;
+        this.price = price;
+        this.color = color;
+        this.src = src;
+    }
+    setName(value) {
+        return this.productName = value;
+    }
+
+    setPrice(value) {
+        return this.price = value;
+    }
+    setColor(value) {
+        return this.color = value;
+    }
+    setSRC(value) {
+        return this.src = value;
+    }
+
+    productNameFiter() {
+        return this.productName;
+    };
+    priceFiter() {
+        return this.price;
+    };
+    colorFiter() {
+        return this.color;
+    };
+    srcFiter() {
+        return this.src;
+    };
+    infor() {
+        return `${this.productName} , ${this.price}, ${this.color},${this.src}`;
+    }
+    changeProductionName(change) {
+        this.productName = change;
+
+    }
+}
+
+
+
+let SP1 = new ProductList("IPhone 6", 300, "Đen", "http://127.0.0.1:5500/IP6.jpg");
+let SP2 = new ProductList("IPhone 11", 1000, "Trắng", "http://127.0.0.1:5500/IP11.jpg")
+let SP3 = new ProductList("IPhone 12 Pro Max", 1500, "Đen", "http://127.0.0.1:5500/IP12Pro.jpg")
+let SP4 = new ProductList("IPhone 12 Pro Max", 1530, "Xanh", "http://127.0.0.1:5500/IP12Pro.jpg")
+let SP5 = new ProductList("Classic phone", 2530, "Xanh", "http://127.0.0.1:5500/DTBan.jpg")
+let SP6 = new ProductList("SamSung Gấp", 3430, "Xanh-Đen", "http://127.0.0.1:5500/SamXungGap.jpg")
+let arr = [SP1, SP2, SP3, SP4];
+arr.push(SP6)
+
+console.log(arr);
+
+// Show table
+function createTable(arr) {
+    let table = "<table border='1' width='300' cellspacing='0' cellpadding='3'>";
+    table = table + "<tr id='Headers'>";
+    table = table + "<td>STT</td>";
+    table = table + "<td>Product's name</td>";
+    table = table + "<td>Price ($)</td>";
+    table = table + "<td>Color</td>";
+    table = table + "<td>Image</td>";
+    table = table + "</tr> <br>";
+    for (let i = 0; i < arr.length; i++) {
+        table = table + "<tr>";
+        let stt = i;
+        table = table + "<td>" + stt + "</td>";
+        table = table + "<td>" + arr[i].productName + "</td>";
+        table = table + "<td>" + arr[i].price + "</td>";
+        table = table + "<td>" + arr[i].color + "</td>";
+        table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+        table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
+        table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button></td>`;
+        table = table + "</tr>";
+    }
+    document.getElementById('show').innerHTML = table;
+}
+
+createTable(arr);
+// warning when adding textbox is empty
+function warnning() {
+    let name = document.getElementById('productName');
+    let price = document.getElementById('price');
+    let color = document.getElementById('color');
+    let src = document.getElementById('src');
+    if (name.value == "") {
+        alert(" you must add product name!!!")
+    } else if (price.value == "") {
+        alert(" you must add price!!!")
+    } else if (color.value == "") {
+        alert(" you must add color!!!")
+    } else if (src.value == "") {
+        alert(" you must add Source!!!")
+    }
+}
+
+//adding from textbox 
+function adding() {
+    let name = document.getElementById('productName');
+    let price = document.getElementById('price');
+    let color = document.getElementById('color');
+    let src = document.getElementById('src');
+    if (name.value == "" || price.value == "" || color.value == "" || src.value == "") {
+        warnning();
+    } else {
+        let a = new ProductList(name.value, price.value, color.value, src.value);
+
+        arr.push(a);
+
+        document.getElementById('productName').value = ""
+        document.getElementById('price').value = ""
+        document.getElementById('color').value = ""
+        document.getElementById('src').value = ""
+    }
+    createTable(arr);
+
+}
+
+// delete
+function deleteIndex(index) {
+    arr.splice(index, 1);
+    createTable(arr);
+}
+
+// Show editing form
+function showFormEdit(index) {
+    document.getElementById('addingForm').innerHTML = "";
+    document.getElementById('formEdit').innerHTML = `
+    <h1> Form Edit</h3>
+    <input type="text" placeholeder=" re-type the product name" id="editName">
+    <input type="text" placeholeder=" re-type the price" id="editPrice">
+    <input type="text" placeholeder=" re-type the color" id="editColor">
+    <input type="text" placeholeder=" re-type the source" id="editSRC">
+    <br>
+    <br>
+    <button class="mainButton" onclick="edit(${index})">Save</button>
+    `;
+    let editName = document.getElementById('editName');
+    let editPrice = document.getElementById('editPrice');
+    let editColor = document.getElementById('editColor');
+    let editSRC = document.getElementById('editSRC');
+    editName.value = arr[index].productNameFiter();
+    editPrice.value = arr[index].priceFiter();
+    editColor.value = arr[index].colorFiter();
+    editSRC.value = arr[index].srcFiter();
+    document.getElementById('editName').focus();
+}
+
+// Show Searching form & hide adding form
+function searchButton() {
+    document.getElementById('addingForm').innerHTML = ""
+    document.getElementById('SearchingForm').innerHTML = `
+    <table id="TBSearch" align="center">
+    <th>search by product's name</th>
+    <th>search by price</th>
+    <th><Button onclick="searcher()" class="mainButton" id="searcher">Search </Button></th>
+    <tr>
+        <td><select name="" id="select1">
+            <option value="Iphone" >Iphone </option>
+            <option value="SamSung" >SamSung </option>
+        </select> </td>
+        <td> 
+            <select name="" id="select2">
+                <option value="500">under 500$</option>
+                <option value="1000" id="under1000">under 1000$ </option>
+                <option value="2000" id="under2000"> under 2000$</option>
+                <option value="2001" id="over200">over 2000$</option>
+            </select>
+        </td>
+        <td></td>
+    </tr>
+  
+    </table>
+    `
+}
+
+//Search 
+function searcher(){
+    document.getElementById('SearchingForm').innerHTML =""
+    document.getElementById('addingForm').innerHTML =`
+    <div id="addingForm" align="center">
+    
+    <input type="text" id="productName" placeholder="add product's name here"><br>
+    <input type="text" id="price" placeholder="add the price"><br>
+    <input type="text" id="color" placeholder="add the color"><br>
+    <input type="text" id="src" placeholder="add source of image">
+    <!-- <input type="text" id="fixItem" placeholder="Fixing products"> -->
+    <br><br>
+    <button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
+    <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
+    <button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
+    <a href="https://www.thegioididong.com/">Jump to the main page</a>
+    </div>
+    `
+
+}
+
+// edit index
+
+function edit(index) {
+    document.getElementById('addingForm').innerHTML = `
+    <div id="addingForm" align="center">
+    
+    <input type="text" id="productName" placeholder="add product's name here"><br>
+    <input type="text" id="price" placeholder="add the price"><br>
+    <input type="text" id="color" placeholder="add the color"><br>
+    <input type="text" id="src" placeholder="add source of image">
+    <!-- <input type="text" id="fixItem" placeholder="Fixing products"> -->
+    <br><br>
+    <button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
+    <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
+    <button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
+    <a href="https://www.thegioididong.com/">Jump to the main page</a>
+    </div>
+    `
+    let editName = document.getElementById('editName');
+    let editPrice = document.getElementById('editPrice');
+    let editColor = document.getElementById('editColor');
+    let editSRC = document.getElementById('editSRC');
+    arr[index].setName(editName.value);
+    arr[index].setPrice(editPrice.value);
+    arr[index].setColor(editColor.value);
+    arr[index].setSRC(editSRC.value);
+    document.getElementById('formEdit').innerHTML = "";
+    createTable(arr);
+}
+
+// Chạy banner
+let index = 1;
+function changeBanner() {
+    let a = ["http://127.0.0.1:5500/Banner1.png", "http://127.0.0.1:5500/Banner2.png", "http://127.0.0.1:5500/Banner3.png"];
+    document.getElementById('banner').src = a[index];
+    index++;
+    if (index > 2) {
+        index = 0;
+    }
+}
+setInterval(changeBanner, 1000);

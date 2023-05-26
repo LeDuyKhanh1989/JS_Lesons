@@ -1,0 +1,105 @@
+.banner {
+    width: 100%;
+    height: 150px;
+    }
+    
+    .deleteButton {
+        width: 80px;
+        height: 30px;
+        font-size: 20px;
+        align-items: center;
+        text-align: center;
+        font-weight: 900;
+        background-color: rgb(236, 155, 120);
+        text-align: left;
+        color: rgb(0, 51, 255);
+        border-radius: 10%;
+        padding: 0 0 10px 0;
+    }
+    .editButton{
+        width: 80px;
+        height: 30px;
+        font-size: 20px;
+        align-items: center;
+        text-align: center;
+        font-weight: 900;
+        background-color: rgb(51, 154, 76);
+        color: rgb(6, 6, 6);
+        border-radius: 10%;
+        padding: 0 0 20px 0;
+        
+    }
+    
+    .mainButton {
+        width: 300px;
+        height: 30px;
+        font-size: 20px;
+        align-items: center;
+        text-align: center;
+        font-weight: 900;
+        background-color: rgb(159, 245, 182);
+        text-align: center;
+        color: rgb(39, 2, 2);
+        border-radius: 10%;
+    }
+    .title {
+        font-weight: 900;
+        color: Red;
+        align-content: center;
+        align-items: center;
+        
+    }
+    #formEdit{
+        align-items: center;
+        align-content: center;
+    }
+    
+    img{
+        width: 120px;
+        height: 160px;
+    }
+    table{
+        width: 80%;
+        font-weight: 900;
+        font-size: 30px;
+        border:1px solid ;
+        stroke: beige;
+        margin: 50px 0 50px 100px;
+        padding: 20px 0 50px 100px;
+        
+    }
+    
+    #Headers{
+        font-weight: 900;
+        color: Red;
+    }
+    input{
+        width: 80%;
+        height: 40px;
+        margin: 30px 0 0 0;
+    }
+    h1 {
+        text-align: left;
+        margin: 0 0 0 250px;
+        color: rgb(118, 12, 247)
+        
+    }
+    #TBSearch{
+        width: 80%;
+        font-weight: 900;
+        font-size: 30px;
+        border:1px solid ;
+        stroke: beige;
+        margin: 50px 0 50px 100px;
+        padding: 20px 0 50px 100px;
+        text-align: left;
+    }
+    option{
+        width: 80%;
+        font-weight: 900;
+        font-size: 20px;
+        border:1px solid ;
+        stroke: beige;
+        margin: 50px 0 50px 100px;
+        padding: 20px 0 50px 100px;
+    }
