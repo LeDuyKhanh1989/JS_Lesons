@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPP điện thoại</title>
+</head>
+<body>
+
+    <Script>
+        class phone{
+            constructor(phoneName, battery, sendingMessage, receivingMessage, draftMessage) {
+                this.phoneName=phoneName;
+                this.battery=battery;
+                this.sendingMessage=sendingMessage;
+                this.receivingMessage=receivingMessage;
+                this.draftMessage=draftMessage;
+            }
+            getPhoneName(){
+                return this.phoneName;
+            }
+            getbattery(){
+                return this.battery;
+            }
+            getsendingMessage(){
+                return this.sendingMessage
+            }
+            getreceivingMessage(){
+                return this.receivingMessage;
+            }
+            getdraftMessage(){
+                return this.draftMessage;
+            }
+        }
+
+        let Iphone= new phone("Iphone",100,"hello Itun","hello Iphone","Hello SamSung What are you doing?");
+        let SamSung= new phone("SamSung",100,"hello Androi","hello Androi","Hello Iphone What are you doing?");
+        console.log(Iphone,SamSung);
+    </Script>
+    
+</body>
+</html>
