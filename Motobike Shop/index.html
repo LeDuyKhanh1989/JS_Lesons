@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motobike Shop</title>
+</head>
+<body>
+    <div>
+        <h1>Banner</h1>
+    </div>
+
+    <div id="loginForm">
+        <h1>Login</h1>
+        <input type="text" id="user">
+        <input type="password" id="pass"><br>
+        <button onclick="login()">Đăng nhập</button>
+    </div>
+
+    <div id="adminform">
+    </div>
+
+    <div id="productForm">
+    </div>
+
+<table id="show">
+
+</table>
+    
+</body>
+</html>
+
+<Script>
+//  Tạo class
+    class motobike{
+        tenHang;
+        loaiXe;
+        gia;
+        mau;
+        anh;
+        constructor(tenHang,loaiXe,gia,mau,anh){
+            this.tenHang=tenHang;
+            this.loaiXe=loaiXe;
+            this.gia=gia;
+            this.mau=mau;
+            this.anh=anh;
+        }
+    }
+    
+// Khai báo mảng, biến
+    let sp1=new motobike("HonDa","Cup990",600,"Blue","Đéo có ảnh");
+    let sp2=new motobike("HonDa","Cup991",650,"Blue","Đéo có ảnh");
+    let sp3=new motobike("HonDa","Air",1250,"Red","Đéo có ảnh");
+    let array=[sp1,sp2,sp3];
+    console.log(array);
+    let index=0;
+
+ // Login vào trang chủ   
+    function login(){
+        document.getElementById('loginForm').innerHTML=""
+        document.getElementById('adminform').innerHTML=`
+        <button id="linkToProductionForm">Product form</button>
+        <button id="linkToClientForm">Danh sách khách hàng</button>
+        <button id="linktoProductionForm">Xem giỏ hàng</button><br>
+        <input type="text" id="tenHang"><br>
+        <input type="text" id="loaiXe"><br>
+        <input type="text" id="gia"><br>
+        <input type="text" id="mau"><br>
+        <input type="text" id="anh"><br>
+        <button>Thêm</button>
+
+        <table id="show">
+
+        </table>
+
+        `
+        xemDanhSachSP(array);
+    }
+// Xem danh sách sản phẩm
+
+    function xemDanhSachSP(array) {
+    let table = "<table border='1' width='300' cellspacing='0' cellpadding='3'>";
+    table = table + "<tr class='Headers'>";
+    table = table + "<td>STT</td>";
+    table = table + "<td>Tên hãng</td>";
+    table = table + "<td>Loại xe</td>";
+    table = table + "<td>Giá</td>";
+    table = table + "<td>Mầu xe</td>";
+    table = table + "<td>Ảnh minh họa</td>";
+    table = table + "</tr> <br>";
+    for (let i = 0; i < array.length; i++) {
+        table = table + "<tr>";
+        let stt = i;
+        table = table + "<td>" + stt + "</td>";
+        table = table + "<td>" + array[i].tenHang + "</td>";
+        table = table + "<td>" + array[i].loaiXe + "</td>";
+        table = table + "<td>" + array[i].gia + "</td>";
+        table = table + "<td>" + array[i].mau + "</td>";
+        table = table + `<td> <img src= "${array[i].anh}" alt="Ảnh sản phẩm"> </td>`;
+        table = table + `<td><button class="editButton" onclick='editIndex(${i})'>Edit</button></td>`;
+        table = table + `<td><button class="deleteButton" onclick='xoaIndex(${i})'>Delete</button>`;
+        table = table + "</tr>";
+    }
+    document.getElementById('show').innerHTML = table;
+}
+
+
+// xóa sản phẩm
+function xoaIndex(index) {
+    array.splice(index, 1);
+    xemDanhSachSP(array)
+}
+
+// Sửa index
+function editIndex(index){
+    index=1;
+}
+
+// Thêm giá trị cho mảng
+let tenHang=document.getElementById('tenHang');
+
+
+</Script>
