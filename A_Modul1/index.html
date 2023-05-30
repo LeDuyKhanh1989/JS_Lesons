@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modul1_opp</title>
-    <Link rel="stylesheet" href="index.css"></Link>
+    <Link rel="stylesheet" href="index.css">
+    </Link>
 </head>
+
 <body>
-     <!-- design banner -->
-    <div> 
+    <!-- design banner -->
+
+    <div>
         <img class="banner" src="../Banner1.png" alt="ảnh banner" id="banner">
     </div>
-    <div align="center" id="formEdit"></div>
-    <div align="center" id="SearchingForm">
+    <div align="center" id="loginToMainPage"></div>
+    <div id="showMainPage">
         
-    </div>
+        <div align="center" id="formEdit"></div>
+        <div align="center" id="SearchingForm">
 
-   <div id="addingForm" align="center">
+        </div>
+
+        <div id="addingForm" align="center">
+
+            <input type="text" id="productName" placeholder="add product's name here"><br>
+            <input type="text" id="price" placeholder="add the price"><br>
+            <input type="text" id="color" placeholder="add the color"><br>
+            <input type="text" id="src" placeholder="add source of image">
+            <!-- <input type="text" id="fixItem" placeholder="Fixing products"> -->
+            <br><br>
+            <button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
+            <button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
+            <h2 align="right" onclick="showOrderList()" style="padding: 0 300px 0 0;" id="orderList">Ordering list</h2>
+            <h2 align="right" style="padding: 0 300px 0 0;" id="showMoney"></h2>
+            <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
+        </div>
+        <br>
     
-    <input type="text" id="productName" placeholder="add product's name here"><br>
-    <input type="text" id="price" placeholder="add the price"><br>
-    <input type="text" id="color" placeholder="add the color"><br>
-    <input type="text" id="src" placeholder="add source of image">
-    <!-- <input type="text" id="fixItem" placeholder="Fixing products"> -->
-    <br><br>
-    <button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
-    <button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
-    <a href="https://www.thegioididong.com/">Jump to the main page</a>
-    <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
+        <h1>Products list</h1>
+        <table id="show">
+
+        </table>
     </div>
-    <br>
-    <h1>Products list</h1>
-    <table id="show">
-        
-    </table>
-    
 </body>
 <script src="script.js"></script>
+
 </html>

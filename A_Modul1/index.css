@@ -64,12 +64,12 @@
         font-size: 30px;
         border:1px solid ;
         stroke: beige;
-        margin: 50px 0 50px 100px;
-        padding: 20px 0 50px 100px;
+        margin: 50px 0 50px 230px;
+        padding: 20px 0 50px 50px;
         
     }
     
-    #Headers{
+    .Headers{
         font-weight: 900;
         color: Red;
     }

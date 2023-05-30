@@ -39,24 +39,24 @@ class ProductList {
 
     }
 }
-
-
-
+let arrLog=["Khanh",12345];
 let SP1 = new ProductList("IPhone 6", 300, "Đen", "http://127.0.0.1:5500/IP6.jpg");
-let SP2 = new ProductList("IPhone 11", 1000, "Trắng", "http://127.0.0.1:5500/IP11.jpg")
-let SP3 = new ProductList("IPhone 12 Pro Max", 1500, "Đen", "http://127.0.0.1:5500/IP12Pro.jpg")
-let SP4 = new ProductList("IPhone 12 Pro Max", 1530, "Xanh", "http://127.0.0.1:5500/IP12Pro.jpg")
-let SP5 = new ProductList("Classic phone", 2530, "Xanh", "http://127.0.0.1:5500/DTBan.jpg")
-let SP6 = new ProductList("SamSung Gấp", 3430, "Xanh-Đen", "http://127.0.0.1:5500/SamXungGap.jpg")
-let arr = [SP1, SP2, SP3, SP4];
+let SP2 = new ProductList("IPhone 11", 750, "Trắng", "http://127.0.0.1:5500/IP11.jpg");
+let SP3 = new ProductList("IPhone 12 Pro Max", 1500, "Đen", "http://127.0.0.1:5500/IP12Pro.jpg");
+let SP4 = new ProductList("IPhone 12 Pro Max", 1530, "Xanh", "http://127.0.0.1:5500/IP12Pro.jpg");
+let SP5 = new ProductList("Classic phone", 900, "Xanh", "http://127.0.0.1:5500/DTBan.jpg");
+let SP6 = new ProductList("SamSung Zplip", 3430, "Xanh-Đen", "http://127.0.0.1:5500/SamXungGap.jpg");
+let SP7=new ProductList ("SamSung galaxy s23", 2500, "Đen-Trắng","https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1bJvDB.img?w=720&h=540&m=6");
+let SP8=new ProductList ("SamSung galaxy s24 ultra", 2600, "Xám","https://cdn.mos.cms.futurecdn.net/ahXvYK4vQAMGdCCLPzKz5X-1920-80.jpeg.webp");
+let arr = [SP1, SP2, SP3, SP4, SP5,SP7,SP8];
 arr.push(SP6)
-
 console.log(arr);
+let buyArr = [];
 
 // Show table
 function createTable(arr) {
     let table = "<table border='1' width='300' cellspacing='0' cellpadding='3'>";
-    table = table + "<tr id='Headers'>";
+    table = table + "<tr class='Headers'>";
     table = table + "<td>STT</td>";
     table = table + "<td>Product's name</td>";
     table = table + "<td>Price ($)</td>";
@@ -72,7 +72,7 @@ function createTable(arr) {
         table = table + "<td>" + arr[i].color + "</td>";
         table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
         table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-        table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button></td>`;
+        table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
         table = table + "</tr>";
     }
     document.getElementById('show').innerHTML = table;
@@ -123,6 +123,12 @@ function deleteIndex(index) {
     arr.splice(index, 1);
     createTable(arr);
 }
+// buy
+function buyProduct(index) {
+    buyArr.push(arr[index]);
+    document.getElementById('orderList').innerHTML = `Ordering list: ${buyArr.length} products`
+    showMoney();
+}
 
 // Show editing form
 function showFormEdit(index) {
@@ -148,54 +154,178 @@ function showFormEdit(index) {
     document.getElementById('editName').focus();
 }
 
+//goBack adding form 
+function goBack() {
+    createTable(arr);
+    document.getElementById('SearchingForm').innerHTML = ""
+    document.getElementById('addingForm').innerHTML = `
+<input type="text" id="productName" placeholder="add product's name here"><br>
+<input type="text" id="price" placeholder="add the price"><br>
+<input type="text" id="color" placeholder="add the color"><br>
+<input type="text" id="src" placeholder="add source of image">
+<br><br>
+<button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
+<button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
+<h2 align="right" onclick="showOrderList()" style="padding: 0 300px 0 0;" id="orderList">Ordering list</h2>
+<h2 align="right" style="padding: 0 300px 0 0;" id="showMoney"></h2>
+</div>
+<br>
+    `
+    showMoney();
+}
+
 // Show Searching form & hide adding form
 function searchButton() {
     document.getElementById('addingForm').innerHTML = ""
     document.getElementById('SearchingForm').innerHTML = `
     <table id="TBSearch" align="center">
-    <th>search by product's name</th>
-    <th>search by price</th>
-    <th><Button onclick="searcher()" class="mainButton" id="searcher">Search </Button></th>
+    <th class='Headers'>search by product's name</th>
+    <th class='Headers'>search by price</th>
+    <th><Button onclick="searcher()" class="mainButton" id="searcher">Search </Button>
+    <Button onclick="goBack()" class="mainButton" id="goBack">Go back adding page </Button></th>
     <tr>
-        <td><select name="" id="select1">
-            <option value="Iphone" >Iphone </option>
+        <td><select onchange="changeValueName(this)" name="" id="select1">
+          <option value="None">None</option>
+            <option value="IPhone" >Iphone </option>
             <option value="SamSung" >SamSung </option>
+            <option value="Classic" >Classic</option>
         </select> </td>
         <td> 
-            <select name="" id="select2">
-                <option value="500">under 500$</option>
-                <option value="1000" id="under1000">under 1000$ </option>
-                <option value="2000" id="under2000"> under 2000$</option>
-                <option value="2001" id="over200">over 2000$</option>
+            <select onchange="changeValue(this)" name="select2" id="select2">
+                <option value="None">None</option>
+                <option value="over2000">over 2000$</option>
+                <option value="under2000"> under 2000$</option>
+                <option value="under1000">under 1000$ </option>
+                <option value="under500">under 500$</option>
+                
             </select>
         </td>
         <td></td>
     </tr>
-  
-    </table>
-    `
-}
-
-//Search 
-function searcher(){
-    document.getElementById('SearchingForm').innerHTML =""
-    document.getElementById('addingForm').innerHTML =`
-    <div id="addingForm" align="center">
     
-    <input type="text" id="productName" placeholder="add product's name here"><br>
-    <input type="text" id="price" placeholder="add the price"><br>
-    <input type="text" id="color" placeholder="add the color"><br>
-    <input type="text" id="src" placeholder="add source of image">
-    <!-- <input type="text" id="fixItem" placeholder="Fixing products"> -->
-    <br><br>
-    <button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
-    <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
-    <button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
-    <a href="https://www.thegioididong.com/">Jump to the main page</a>
-    </div>
+    </table>
+    <h2 align="right" onclick="showOrderList()" style="padding: 0 300px 0 0;" id="orderList">Ordering list</h2>
+    <h2 align="right" style="padding: 0 300px 0 0;" id="showMoney"></h2>
     `
-
+    document.getElementById('select1').focus();
+    showMoney()
 }
+//changeValue Name
+let variantSelect1;
+function changeValueName(select1) {
+    variantSelect1 = select1.value;
+    variantSelect2="none";
+  
+}
+
+//changeValue Price
+let variantSelect2;
+function changeValue(select2) {
+    variantSelect2 = select2.value;
+    variantSelect1="none";
+   
+}
+// clear product table
+function clearProductTable() {
+    document.getElementById('show').innerHTML = ""
+}
+
+// searcher function
+function searcher() {
+    searchButton();
+    console.log(variantSelect2);
+    let table = "<table border='1' width='300' cellspacing='0' cellpadding='3'>";
+    table = table + "<tr class='Headers'>";
+    table = table + "<td>STT</td>";
+    table = table + "<td>Product's name</td>";
+    table = table + "<td>Price ($)</td>";
+    table = table + "<td>Color</td>";
+    table = table + "<td>Image</td>";
+    table = table + "</tr> <br>";
+    for (let i = 0; i < arr.length; i++) {
+        if (variantSelect2 == "over2000" && arr[i].priceFiter() > 2000) {
+            variantSelect1="none";
+            table = table + "<tr>";
+            table = table + "<td>" + i + "</td>";
+            table = table + "<td>" + arr[i].productName + "</td>";
+            table = table + "<td>" + arr[i].price + "</td>";
+            table = table + "<td>" + arr[i].color + "</td>";
+            table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + "</tr>";
+        } else if (variantSelect2 == "under2000" && arr[i].priceFiter() < 2000) {
+            variantSelect1="none";
+            table = table + "<tr>";
+            table = table + "<td>" + i + "</td>";
+            table = table + "<td>" + arr[i].productName + "</td>";
+            table = table + "<td>" + arr[i].price + "</td>";
+            table = table + "<td>" + arr[i].color + "</td>";
+            table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + "</tr>";
+        } else if (variantSelect2 == "under1000" && arr[i].priceFiter() < 1000) {
+            variantSelect1="none";
+            table = table + "<tr>";
+            table = table + "<td>" + i + "</td>";
+            table = table + "<td>" + arr[i].productName + "</td>";
+            table = table + "<td>" + arr[i].price + "</td>";
+            table = table + "<td>" + arr[i].color + "</td>";
+            table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + "</tr>";
+        } else if (variantSelect2 == "under500" && arr[i].priceFiter() < 500) {
+            variantSelect1="none";
+            table = table + "<tr>";
+            table = table + "<td>" + i + "</td>";
+            table = table + "<td>" + arr[i].productName + "</td>";
+            table = table + "<td>" + arr[i].price + "</td>";
+            table = table + "<td>" + arr[i].color + "</td>";
+            table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + "</tr>";
+        } else if (variantSelect1 == "IPhone" && arr[i].productNameFiter().includes(variantSelect1)) {
+            variantSelect2="none";
+            table = table + "<tr>";
+            table = table + "<td>" + i + "</td>";
+            table = table + "<td>" + arr[i].productName + "</td>";
+            table = table + "<td>" + arr[i].price + "</td>";
+            table = table + "<td>" + arr[i].color + "</td>";
+            table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + "</tr>";
+        } else if (variantSelect1 == "SamSung" && arr[i].productNameFiter().includes(variantSelect1)) {
+            variantSelect2="none";
+            table = table + "<tr>";
+            table = table + "<td>" + i + "</td>";
+            table = table + "<td>" + arr[i].productName + "</td>";
+            table = table + "<td>" + arr[i].price + "</td>";
+            table = table + "<td>" + arr[i].color + "</td>";
+            table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + "</tr>";
+        } else if(variantSelect1 == "Classic" && arr[i].productNameFiter().includes(variantSelect1)){
+            variantSelect2="none";
+            table = table + "<tr>";
+            table = table + "<td>" + i + "</td>";
+            table = table + "<td>" + arr[i].productName + "</td>";
+            table = table + "<td>" + arr[i].price + "</td>";
+            table = table + "<td>" + arr[i].color + "</td>";
+            table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + "</tr>";
+        }
+    }
+    console.log(variantSelect1);
+    document.getElementById('show').innerHTML = table;
+}
+
 
 // edit index
 
@@ -210,9 +340,10 @@ function edit(index) {
     <!-- <input type="text" id="fixItem" placeholder="Fixing products"> -->
     <br><br>
     <button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
-    <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
     <button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
-    <a href="https://www.thegioididong.com/">Jump to the main page</a>
+    <h2 align="right" onclick="showOrderList()" style="padding: 0 300px 0 0;" id="orderList">Ordering list</h2>
+    <h2 align="right" style="padding: 0 300px 0 0;" id="showMoney"></h2>
+    <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
     </div>
     `
     let editName = document.getElementById('editName');
@@ -225,7 +356,118 @@ function edit(index) {
     arr[index].setSRC(editSRC.value);
     document.getElementById('formEdit').innerHTML = "";
     createTable(arr);
+    showMoney()
 }
+//show Money number in H2 
+
+function showMoney(){
+    let sumMoney=0;
+        for(let i=0;i<buyArr.length;i++){
+            sumMoney=sumMoney + parseInt(buyArr[i].priceFiter());
+        }
+        document.getElementById('showMoney').innerHTML=`You are speeding ${sumMoney}$`
+        document.getElementById('orderList').innerHTML = `Ordering list: ${buyArr.length} products`
+    } 
+
+//show order list
+
+function showOrderList() {
+    clearProductTable()
+    console.log(buyArr);
+    let table = "<table border='1' width='300' cellspacing='0' cellpadding='3'>";
+    table = table + "<tr class='Headers'>";
+    table = table + "<td>STT</td>";
+    table = table + "<td>Product's name</td>";
+    table = table + "<td>Price ($)</td>";
+    table = table + "<td>Color</td>";
+    table = table + "<td>Image</td>";
+    table = table + "</tr> <br>";
+    for (let i = 0; i < buyArr.length; i++) {
+        table = table + "<tr>";
+        table = table + "<td>" + i + "</td>";
+        table = table + "<td>" + buyArr[i].productName + "</td>";
+        table = table + "<td>" + buyArr[i].price + "</td>";
+        table = table + "<td>" + buyArr[i].color + "</td>";
+        table = table + `<td> <img src= "${buyArr[i].src}" alt="Ảnh sản phẩm"> </td>`;
+        table = table + `<td><button class="deleteButton" align="center" style="width: 200px" onclick='cancelOrdering(${i})'>Cancle ordering</button></td>`;
+        table = table + "</tr>";
+    }
+    document.getElementById('show').innerHTML = table;
+
+}
+// Cancel Ordering
+function cancelOrdering(index){
+    buyArr.splice(index, 1);
+    showOrderList();
+    document.getElementById('orderList').innerHTML = `Ordering list: ${buyArr.length} products`
+    showMoney();
+}
+
+// Login form
+
+function hideAll(){
+    document.getElementById('showMainPage').innerHTML=""
+}
+hideAll();
+
+// Show Login form
+function showLoginForm(){
+    document.getElementById('loginToMainPage').innerHTML=`
+    <h1 align="center" style="padding: 0 0 0 450px"> Login Form</h3>
+    <input style="width: 30%" type="text" placeholeder="User name" id="userName"><br>
+    <input style="width: 30%" type="password" placeholeder="Password" id="passWord">
+    <br>
+    <br>
+    <button class="editButton" onclick='logInToMainPage()'>Login</button>
+    `
+}
+showLoginForm();
+
+
+// Show MainPage
+function ShowMainPage(){
+    document.getElementById('showMainPage').innerHTML=`
+    <div align="center" id="formEdit"></div>
+        <div align="center" id="SearchingForm">
+
+        </div>
+
+        <div id="addingForm" align="center">
+
+            <input type="text" id="productName" placeholder="add product's name here"><br>
+            <input type="text" id="price" placeholder="add the price"><br>
+            <input type="text" id="color" placeholder="add the color"><br>
+            <input type="text" id="src" placeholder="add source of image">
+            <!-- <input type="text" id="fixItem" placeholder="Fixing products"> -->
+            <br><br>
+            <button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
+            <button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
+            <h2 align="right" onclick="showOrderList()" style="padding: 0 300px 0 0;" id="orderList">Ordering list</h2>
+            <h2 align="right" style="padding: 0 300px 0 0;" id="showMoney"></h2>
+            <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
+        </div>
+        <br>
+        <h1>Products list</h1>
+        <table id="show">
+
+        </table>
+    `
+}
+
+// Check Login performance
+function logInToMainPage(){
+    let userName=document.getElementById('userName');
+    let passWord=document.getElementById('passWord');
+    if(userName.value==arrLog[0]&&passWord.value==arrLog[1]){
+    document.getElementById('loginToMainPage').innerHTML=""
+    ShowMainPage();
+    createTable(arr);
+    showMoney();
+    } else {
+        alert(" Your user name or pass word is incorrect")
+    }
+}
+
 
 // Chạy banner
 let index = 1;
