@@ -39,19 +39,34 @@ class ProductList {
 
     }
 }
-let arrLog=["Khanh",12345];
+class user {
+    account;
+    pass;
+    constructor(account, pass) {
+        this.account = account;
+        this.pass = pass;
+    }
+}
+let admin = new user("admin", 12345);
+let user1 = new user("test1", 123);
+let user2 = new user("test2", 123);
+let user3 = new user("test3", 123);
+let arrLog = [admin, user1, user2, user3];
+
 let SP1 = new ProductList("IPhone 6", 300, "Đen", "http://127.0.0.1:5500/IP6.jpg");
 let SP2 = new ProductList("IPhone 11", 750, "Trắng", "http://127.0.0.1:5500/IP11.jpg");
 let SP3 = new ProductList("IPhone 12 Pro Max", 1500, "Đen", "http://127.0.0.1:5500/IP12Pro.jpg");
 let SP4 = new ProductList("IPhone 12 Pro Max", 1530, "Xanh", "http://127.0.0.1:5500/IP12Pro.jpg");
 let SP5 = new ProductList("Classic phone", 900, "Xanh", "http://127.0.0.1:5500/DTBan.jpg");
 let SP6 = new ProductList("SamSung Zplip", 3430, "Xanh-Đen", "http://127.0.0.1:5500/SamXungGap.jpg");
-let SP7=new ProductList ("SamSung galaxy s23", 2500, "Đen-Trắng","https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1bJvDB.img?w=720&h=540&m=6");
-let SP8=new ProductList ("SamSung galaxy s24 ultra", 2600, "Xám","https://cdn.mos.cms.futurecdn.net/ahXvYK4vQAMGdCCLPzKz5X-1920-80.jpeg.webp");
-let arr = [SP1, SP2, SP3, SP4, SP5,SP7,SP8];
+let SP7 = new ProductList("SamSung galaxy s23", 2500, "Đen-Trắng", "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1bJvDB.img?w=720&h=540&m=6");
+let SP8 = new ProductList("SamSung galaxy s24 ultra", 2600, "Xám", "https://cdn.mos.cms.futurecdn.net/ahXvYK4vQAMGdCCLPzKz5X-1920-80.jpeg.webp");
+let arr = [SP1, SP2, SP3, SP4, SP5, SP7, SP8];
 arr.push(SP6)
 console.log(arr);
 let buyArr = [];
+let hideDeleteFix = 0;
+
 
 // Show table
 function createTable(arr) {
@@ -71,11 +86,31 @@ function createTable(arr) {
         table = table + "<td>" + arr[i].price + "</td>";
         table = table + "<td>" + arr[i].color + "</td>";
         table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-        table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-        table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+        table = table + `<td><button class="editButtonTable" onclick='showFormEdit(${i})'>Edit</button></td>`;
+        table = table + `<td><button class="deleteButtonTable" onclick='deleteIndex(${i})'>Delete</button> <button class="buybuttonTable" onclick='buyProduct(${i})'>Buy</button></td>`;
         table = table + "</tr>";
+
     }
     document.getElementById('show').innerHTML = table;
+    console.log("aaaaaaaa " + hideDeleteFix)
+
+    if (hideDeleteFix == 0) {
+        let buy = document.querySelectorAll(".buybuttonTable");
+        for (let i = 0; i < buy.length; i++) {
+            buy[i].hidden = true;
+        }
+
+    } else if (hideDeleteFix == 1) {
+        let edit = document.querySelectorAll(".editButtonTable");
+        for (let i = 0; i < edit.length; i++) {
+            edit[i].hidden = true;
+        }
+
+         let del = document.querySelectorAll(".deleteButtonTable");
+        for (let i = 0; i < del.length; i++) {
+            del[i].hidden = true;
+        }
+    }
 }
 
 createTable(arr);
@@ -172,6 +207,20 @@ function goBack() {
 <br>
     `
     showMoney();
+    if(hideDeleteFix==1){
+        document.getElementById('fixingButton').hidden=true;
+        document.getElementById('productName').hidden=true;
+        document.getElementById('price').hidden=true;
+        document.getElementById('color').hidden=true;
+        document.getElementById('src').hidden=true;
+
+    } else {
+        document.getElementById('fixingButton').hidden=false;
+        document.getElementById('productName').hidden=false;
+        document.getElementById('price').hidden=false;
+        document.getElementById('color').hidden=false;
+        document.getElementById('src').hidden=false;
+    }
 }
 
 // Show Searching form & hide adding form
@@ -214,16 +263,16 @@ function searchButton() {
 let variantSelect1;
 function changeValueName(select1) {
     variantSelect1 = select1.value;
-    variantSelect2="none";
-  
+    variantSelect2 = "none";
+
 }
 
 //changeValue Price
 let variantSelect2;
 function changeValue(select2) {
     variantSelect2 = select2.value;
-    variantSelect1="none";
-   
+    variantSelect1 = "none";
+
 }
 // clear product table
 function clearProductTable() {
@@ -244,86 +293,104 @@ function searcher() {
     table = table + "</tr> <br>";
     for (let i = 0; i < arr.length; i++) {
         if (variantSelect2 == "over2000" && arr[i].priceFiter() > 2000) {
-            variantSelect1="none";
+            variantSelect1 = "none";
             table = table + "<tr>";
             table = table + "<td>" + i + "</td>";
             table = table + "<td>" + arr[i].productName + "</td>";
             table = table + "<td>" + arr[i].price + "</td>";
             table = table + "<td>" + arr[i].color + "</td>";
             table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + `<td><button class="editButtonTable" onclick='showFormEdit(${i})'>Edit</button></td>`;
+             table = table + `<td><button class="deleteButtonTable" onclick='deleteIndex(${i})'>Delete</button> <button class="buybuttonTable" onclick='buyProduct(${i})'>Buy</button></td>`;
             table = table + "</tr>";
         } else if (variantSelect2 == "under2000" && arr[i].priceFiter() < 2000) {
-            variantSelect1="none";
+            variantSelect1 = "none";
             table = table + "<tr>";
             table = table + "<td>" + i + "</td>";
             table = table + "<td>" + arr[i].productName + "</td>";
             table = table + "<td>" + arr[i].price + "</td>";
             table = table + "<td>" + arr[i].color + "</td>";
             table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + `<td><button class="editButtonTable" onclick='showFormEdit(${i})'>Edit</button></td>`;
+        table = table + `<td><button class="deleteButtonTable" onclick='deleteIndex(${i})'>Delete</button> <button class="buybuttonTable" onclick='buyProduct(${i})'>Buy</button></td>`;
             table = table + "</tr>";
         } else if (variantSelect2 == "under1000" && arr[i].priceFiter() < 1000) {
-            variantSelect1="none";
+            variantSelect1 = "none";
             table = table + "<tr>";
             table = table + "<td>" + i + "</td>";
             table = table + "<td>" + arr[i].productName + "</td>";
             table = table + "<td>" + arr[i].price + "</td>";
             table = table + "<td>" + arr[i].color + "</td>";
             table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + `<td><button class="editButtonTable" onclick='showFormEdit(${i})'>Edit</button></td>`;
+        table = table + `<td><button class="deleteButtonTable" onclick='deleteIndex(${i})'>Delete</button> <button class="buybuttonTable" onclick='buyProduct(${i})'>Buy</button></td>`;
             table = table + "</tr>";
         } else if (variantSelect2 == "under500" && arr[i].priceFiter() < 500) {
-            variantSelect1="none";
+            variantSelect1 = "none";
             table = table + "<tr>";
             table = table + "<td>" + i + "</td>";
             table = table + "<td>" + arr[i].productName + "</td>";
             table = table + "<td>" + arr[i].price + "</td>";
             table = table + "<td>" + arr[i].color + "</td>";
             table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + `<td><button class="editButtonTable" onclick='showFormEdit(${i})'>Edit</button></td>`;
+        table = table + `<td><button class="deleteButtonTable" onclick='deleteIndex(${i})'>Delete</button> <button class="buybuttonTable" onclick='buyProduct(${i})'>Buy</button></td>`;
             table = table + "</tr>";
         } else if (variantSelect1 == "IPhone" && arr[i].productNameFiter().includes(variantSelect1)) {
-            variantSelect2="none";
+            variantSelect2 = "none";
             table = table + "<tr>";
             table = table + "<td>" + i + "</td>";
             table = table + "<td>" + arr[i].productName + "</td>";
             table = table + "<td>" + arr[i].price + "</td>";
             table = table + "<td>" + arr[i].color + "</td>";
             table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + `<td><button class="editButtonTable" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButtonTable" onclick='deleteIndex(${i})'>Delete</button> <button class="buybuttonTable" onclick='buyProduct(${i})'>Buy</button></td>`;
             table = table + "</tr>";
         } else if (variantSelect1 == "SamSung" && arr[i].productNameFiter().includes(variantSelect1)) {
-            variantSelect2="none";
+            variantSelect2 = "none";
             table = table + "<tr>";
             table = table + "<td>" + i + "</td>";
             table = table + "<td>" + arr[i].productName + "</td>";
             table = table + "<td>" + arr[i].price + "</td>";
             table = table + "<td>" + arr[i].color + "</td>";
             table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + `<td><button class="editButtonTable" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButtonTable" onclick='deleteIndex(${i})'>Delete</button> <button class="buybuttonTable" onclick='buyProduct(${i})'>Buy</button></td>`;
             table = table + "</tr>";
-        } else if(variantSelect1 == "Classic" && arr[i].productNameFiter().includes(variantSelect1)){
-            variantSelect2="none";
+        } else if (variantSelect1 == "Classic" && arr[i].productNameFiter().includes(variantSelect1)) {
+            variantSelect2 = "none";
             table = table + "<tr>";
             table = table + "<td>" + i + "</td>";
             table = table + "<td>" + arr[i].productName + "</td>";
             table = table + "<td>" + arr[i].price + "</td>";
             table = table + "<td>" + arr[i].color + "</td>";
             table = table + `<td> <img src= "${arr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-            table = table + `<td><button class="editButton" onclick='showFormEdit(${i})'>Edit</button></td>`;
-            table = table + `<td><button class="deleteButton" onclick='deleteIndex(${i})'>Delete</button> <button class="editButton" onclick='buyProduct(${i})'>Buy</button></td>`;
+            table = table + `<td><button class="editButtonTable" onclick='showFormEdit(${i})'>Edit</button></td>`;
+            table = table + `<td><button class="deleteButtonTable" onclick='deleteIndex(${i})'>Delete</button> <button class="buybuttonTable" onclick='buyProduct(${i})'>Buy</button></td>`;
             table = table + "</tr>";
         }
     }
-    console.log(variantSelect1);
     document.getElementById('show').innerHTML = table;
+    console.log("aaaaaaaa " + hideDeleteFix)
+
+    if (hideDeleteFix == 0) {
+        let buy = document.querySelectorAll(".buybuttonTable");
+        for (let i = 0; i < buy.length; i++) {
+            buy[i].hidden = true;
+        }
+
+    } else if (hideDeleteFix == 1) {
+        let edit = document.querySelectorAll(".editButtonTable");
+        for (let i = 0; i < edit.length; i++) {
+            edit[i].hidden = true;
+        }
+
+         let del = document.querySelectorAll(".deleteButtonTable");
+        for (let i = 0; i < del.length; i++) {
+            del[i].hidden = true;
+        }
+    }
 }
 
 
@@ -360,14 +427,14 @@ function edit(index) {
 }
 //show Money number in H2 
 
-function showMoney(){
-    let sumMoney=0;
-        for(let i=0;i<buyArr.length;i++){
-            sumMoney=sumMoney + parseInt(buyArr[i].priceFiter());
-        }
-        document.getElementById('showMoney').innerHTML=`You are speeding ${sumMoney}$`
-        document.getElementById('orderList').innerHTML = `Ordering list: ${buyArr.length} products`
-    } 
+function showMoney() {
+    let sumMoney = 0;
+    for (let i = 0; i < buyArr.length; i++) {
+        sumMoney = sumMoney + parseInt(buyArr[i].priceFiter());
+    }
+    document.getElementById('showMoney').innerHTML = `You are speeding ${sumMoney}$`
+    document.getElementById('orderList').innerHTML = `Ordering list: ${buyArr.length} products`
+}
 
 //show order list
 
@@ -389,14 +456,13 @@ function showOrderList() {
         table = table + "<td>" + buyArr[i].price + "</td>";
         table = table + "<td>" + buyArr[i].color + "</td>";
         table = table + `<td> <img src= "${buyArr[i].src}" alt="Ảnh sản phẩm"> </td>`;
-        table = table + `<td><button class="deleteButton" align="center" style="width: 200px" onclick='cancelOrdering(${i})'>Cancle ordering</button></td>`;
+        table = table + `<td><button class="deleteButtonTable" align="center" style="width: 200px" onclick='cancelOrdering(${i})'>Cancle ordering</button></td>`;
         table = table + "</tr>";
     }
     document.getElementById('show').innerHTML = table;
-
 }
 // Cancel Ordering
-function cancelOrdering(index){
+function cancelOrdering(index) {
     buyArr.splice(index, 1);
     showOrderList();
     document.getElementById('orderList').innerHTML = `Ordering list: ${buyArr.length} products`
@@ -404,36 +470,31 @@ function cancelOrdering(index){
 }
 
 // Login form
-
-function hideAll(){
-    document.getElementById('showMainPage').innerHTML=""
+function hideAll() {
+    document.getElementById('showMainPage').innerHTML = ""
 }
 hideAll();
 
 // Show Login form
-function showLoginForm(){
-    document.getElementById('loginToMainPage').innerHTML=`
+function showLoginForm() {
+    document.getElementById('loginToMainPage').innerHTML = `
     <h1 align="center" style="padding: 0 0 0 450px"> Login Form</h3>
     <input style="width: 30%" type="text" placeholeder="User name" id="userName"><br>
     <input style="width: 30%" type="password" placeholeder="Password" id="passWord">
     <br>
     <br>
-    <button class="editButton" onclick='logInToMainPage()'>Login</button>
+    <button class="mainButton" onclick='logInToMainPage()'>Login</button>
     `
 }
 showLoginForm();
 
-
 // Show MainPage
-function ShowMainPage(){
-    document.getElementById('showMainPage').innerHTML=`
+function ShowMainPage() {
+    document.getElementById('showMainPage').innerHTML = `
     <div align="center" id="formEdit"></div>
         <div align="center" id="SearchingForm">
-
         </div>
-
         <div id="addingForm" align="center">
-
             <input type="text" id="productName" placeholder="add product's name here"><br>
             <input type="text" id="price" placeholder="add the price"><br>
             <input type="text" id="color" placeholder="add the color"><br>
@@ -449,25 +510,83 @@ function ShowMainPage(){
         <br>
         <h1>Products list</h1>
         <table id="show">
-
         </table>
     `
 }
 
 // Check Login performance
-function logInToMainPage(){
-    let userName=document.getElementById('userName');
-    let passWord=document.getElementById('passWord');
-    if(userName.value==arrLog[0]&&passWord.value==arrLog[1]){
-    document.getElementById('loginToMainPage').innerHTML=""
-    ShowMainPage();
-    createTable(arr);
-    showMoney();
+function logInToMainPage() {
+    let userName = document.getElementById('userName');
+    let passWord = document.getElementById('passWord');
+    let flag = false;
+    if (userName.value == arrLog[0].account && passWord.value == arrLog[0].pass) {
+        hideDeleteFix = 0;
+        console.log(hideDeleteFix);
     } else {
-        alert(" Your user name or pass word is incorrect")
+        hideDeleteFix = 1;
+
+    }
+
+    for (let i = 0; i < arrLog.length; i++) {
+        if (userName.value == arrLog[i].account && passWord.value == arrLog[i].pass) {
+
+            document.getElementById('loginToMainPage').innerHTML = ""
+            ShowMainPage();
+            createTable(arr);
+            showMoney();
+            showlogout();
+            flag = true;
+            break;
+        } else {
+            flag = false;
+        }
+    }
+    if (flag == false) {
+        alert("your account or password is incorrect");
+        flag = false;
+        hideDeleteFix = 0;
+    }
+    userName.value = ""
+    passWord.value = ""
+    console.log("LLL " + hideDeleteFix);
+
+    if(hideDeleteFix==1){
+        document.getElementById('fixingButton').hidden=true;
+        document.getElementById('productName').hidden=true;
+        document.getElementById('price').hidden=true;
+        document.getElementById('color').hidden=true;
+        document.getElementById('src').hidden=true;
+
+    } else {
+        document.getElementById('fixingButton').hidden=false;
+        document.getElementById('productName').hidden=false;
+        document.getElementById('price').hidden=false;
+        document.getElementById('color').hidden=false;
+        document.getElementById('src').hidden=false;
     }
 }
 
+
+// Show logout button
+function showlogout() {
+    document.getElementById('logout').innerHTML = `
+    <button class="mainButton" align="right" onclick="goBackLogin()" id="logout">Logout</button>
+    `
+}
+
+// hide logout button
+function hidelogout() {
+    document.getElementById('logout').innerHTML = ""
+}
+hidelogout();
+
+// goBackLogin()
+function goBackLogin() {
+    hideAll();
+    showLoginForm();
+    hidelogout();
+    buyArr=[];
+}
 
 // Chạy banner
 let index = 1;

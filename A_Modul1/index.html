@@ -16,6 +16,7 @@
     <div>
         <img class="banner" src="../Banner1.png" alt="ảnh banner" id="banner">
     </div>
+    <div id="logout"></div>
     <div align="center" id="loginToMainPage"></div>
     <div id="showMainPage">
         
@@ -25,17 +26,17 @@
         </div>
 
         <div id="addingForm" align="center">
-
             <input type="text" id="productName" placeholder="add product's name here"><br>
             <input type="text" id="price" placeholder="add the price"><br>
             <input type="text" id="color" placeholder="add the color"><br>
             <input type="text" id="src" placeholder="add source of image">
             <!-- <input type="text" id="fixItem" placeholder="Fixing products"> -->
             <br><br>
-            <button id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
+            <button align="right" id="fixingButton" class="mainButton" onclick="adding()" value="adding">Adding </button>
             <button class="mainButton" id="searchButton" onclick="searchButton()">Search</button>
             <h2 align="right" onclick="showOrderList()" style="padding: 0 300px 0 0;" id="orderList">Ordering list</h2>
             <h2 align="right" style="padding: 0 300px 0 0;" id="showMoney"></h2>
+        
             <!-- <button class="mainButton" onclick="fixing()">Fixing many products </button> -->
         </div>
         <br>

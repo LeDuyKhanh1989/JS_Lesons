@@ -3,7 +3,7 @@
     height: 150px;
     }
     
-    .deleteButton {
+    .deleteButtonTable {
         width: 80px;
         height: 30px;
         font-size: 20px;
@@ -16,7 +16,7 @@
         border-radius: 10%;
         padding: 0 0 10px 0;
     }
-    .editButton{
+    .editButtonTable{
         width: 80px;
         height: 30px;
         font-size: 20px;
@@ -24,6 +24,19 @@
         text-align: center;
         font-weight: 900;
         background-color: rgb(51, 154, 76);
+        color: rgb(6, 6, 6);
+        border-radius: 10%;
+        padding: 0 0 20px 0;
+        
+    }
+    .buybuttonTable{
+        width: 80px;
+        height: 30px;
+        font-size: 20px;
+        align-items: center;
+        text-align: center;
+        font-weight: 900;
+        background-color: rgb(154, 149, 51);
         color: rgb(6, 6, 6);
         border-radius: 10%;
         padding: 0 0 20px 0;
@@ -102,4 +115,12 @@
         stroke: beige;
         margin: 50px 0 50px 100px;
         padding: 20px 0 50px 100px;
+    }
+
+    #logout{
+        align-items: right;
+        align-content: center;
+        margin: 0 0 0 60%;
+        font-weight: 900;
+
     }
